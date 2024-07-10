@@ -1,7 +1,12 @@
+import Layout from "../components/templete/Layout";
+
 export default function Home() {
   return (
-    <>
-      <h1>Foco Jurídico!</h1>
-    </>
+    <Layout
+      titulo="Foco Jurídico"
+      subtitulo="Em construção!"
+    >
+      <h3>Página inicial...</h3>
+    </Layout>
   );
 }
