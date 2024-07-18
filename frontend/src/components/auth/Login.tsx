@@ -4,7 +4,8 @@ import Formulario from "../form/Formulario";
 import AuthInput from "../form/Input";
 import Botao from "../form/Botao";
 import Logo from "../templete/Logo";
-import { faEnvelope,  faLock} from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
+import JaTenhoCadastro from "./JaTenhoCadastro";
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -37,14 +38,12 @@ export default function Login() {
                 />
                 <Botao
                     texto="Entrar"
-                    className="mt-10"
+                    className="mt-14"
                     tipo="primario"
                     onClick={() => { console.log('Teste'); }}
                 />
             </Formulario>
-            <label className="text-gray-400 font-normal tracking-wider text-center">
-                É novo aqui? <span className="text-base1 font-bold">Registre-se</span>
-            </label>
+            <JaTenhoCadastro />
         </div>
     );
 }
