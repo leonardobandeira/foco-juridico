@@ -10,7 +10,7 @@ interface BotaoProps {
 export default function Botao({ texto, tipo = 'primario', onClick, className }: BotaoProps) {
     const defaultClasses = 'w-full rounded-lg px-4 py-3 mt-6';
     const tipoClasses = tipo === 'primario'
-        ? 'bg-blue-900 hover:bg-blue-500 text-white'
+        ? 'bg-base1 hover:bg-blue-500 text-white'
         : 'bg-gray-900 hover:bg-gray-500 text-black';
 
     return (
