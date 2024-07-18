@@ -11,7 +11,7 @@ export default function Botao({ texto, tipo = 'primario', onClick, className }: 
     const defaultClasses = `w-full rounded-lg px-4 py-3 mt-6 font-semibold`;
     const tipoClasses = tipo === 'primario'
         ? 'bg-base1 hover:bg-blue-500 text-white'
-        : 'bg-gray-900 hover:bg-gray-500 text-black';
+        : 'bg-base2 hover:bg-gray-500 text-white';
 
     return (
         <button onClick={onClick} className={`${defaultClasses} ${tipoClasses} ${className}`}>
