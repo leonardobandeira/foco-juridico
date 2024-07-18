@@ -1,8 +1,10 @@
 import { useState } from "react";
+
 import Formulario from "../form/Formulario";
 import AuthInput from "../form/Input";
 import Botao from "../form/Botao";
 import Logo from "../templete/Logo";
+import { faEnvelope,  faLock} from "@fortawesome/free-solid-svg-icons";
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -14,7 +16,7 @@ export default function Login() {
                 <div className="md:hidden mb-6 flex justify-center">
                     <Logo />
                 </div>
-                <h1 className="font-bold md:text-4xl text-3xl mb-10 subpixel-antialiased tracking-wide">
+                <h1 className="font-bold md:text-4xl text-3xl mb-10 tracking-wider">
                     Entrar
                 </h1>
                 <AuthInput
@@ -23,6 +25,7 @@ export default function Login() {
                     valor={email}
                     onChange={setEmail}
                     obrigatorio
+                    icone={faEnvelope}
                 />
                 <AuthInput
                     label="Senha"
@@ -30,6 +33,7 @@ export default function Login() {
                     valor={senha}
                     onChange={setSenha}
                     obrigatorio
+                    icone={faLock}
                 />
                 <Botao
                     texto="Entrar"
