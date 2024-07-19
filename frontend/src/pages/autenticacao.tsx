@@ -28,7 +28,7 @@ export default function Autenticacao() {
     }
 
     if (authPage === 'solicitar') {
-        ladoDireito = <SolicitarAcesso />;
+        ladoDireito = <Sobre />;
     }
 
     return (
