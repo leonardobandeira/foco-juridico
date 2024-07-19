@@ -18,7 +18,7 @@ const AppContext = createContext<AppContextProps>({
 })
 
 export function AppProvider(props) {
-    const [authPage, setAuthPage] = useState<Auth>('solicitar')
+    const [authPage, setAuthPage] = useState<Auth>('')
     const [tema, setTema] = useState<Tema>('')
 
     function alternarTema() {

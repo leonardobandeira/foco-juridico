@@ -5,7 +5,7 @@ import Rodape from "../templete/Rodape";
 
 export default function Inicio() {
     return (
-        <div className="md:w-2/3 w-full flex flex-col justify-between gap-y-24">
+        <div className="flex flex-col justify-between gap-y-24">
             <Banner />
             <Formulario>
                 <Botao
