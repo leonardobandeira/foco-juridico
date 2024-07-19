@@ -11,12 +11,12 @@ export default function Home() {
   return (
     <Layout
       titulo="Foco Jurídico"
-      subtitulo="Em construção!"
+      subtitulo="Bem vindo fulado!"
     >
-        <div className={`flex flex-row w-full flex-grow`}>
-        <AlertasAtivos/>
-        <AlertasAtivos/>
-        </div>
+      <div className={`flex md:flex-row flex-col w-full flex-grow`}>
+        <AlertasAtivos />
+        <AlertasAtivos />
+      </div>
     </Layout>
   );
 }
