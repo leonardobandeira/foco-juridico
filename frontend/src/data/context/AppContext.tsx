@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 
-type Auth = '' | 'login' | 'cadastro' | 'solicitar'
+type Auth = '' | 'login' | 'registrar' | 'solicitar'
 type Tema = 'dark' | ''
 
 interface AppContextProps {
@@ -18,7 +18,7 @@ const AppContext = createContext<AppContextProps>({
 })
 
 export function AppProvider(props) {
-    const [authPage, setAuthPage] = useState<Auth>('')
+    const [authPage, setAuthPage] = useState<Auth>('registrar')
     const [tema, setTema] = useState<Tema>('')
 
     function alternarTema() {
