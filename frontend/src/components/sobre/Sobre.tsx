@@ -3,8 +3,9 @@ import Rodape from "../templete/Rodape";
 
 export default function Sobre() {
     return (
-        <div className="md:w-2/3 w-full flex flex-col justify-center gap-8">
+        <div className="md:w-2/3 w-full flex flex-col justify-center items-center gap-8">
             <Logo />
+            <div className={`md:w-3/5 mx-6 flex flex-col md:gap-4 gap-8 mt-4`}>
             <p>Este aplicativo é fruto de uma iniciativa colaborativa entre a Residência em Tecnologia da Informação (TI)
                 da Universidade Federal do Rio Grande do Norte (UFRN) e o Tribunal Regional Federal da 5ª Região (TRF5).
                 Trata-se de um Trabalho de Conclusão de Curso (TCC)
@@ -16,11 +17,11 @@ export default function Sobre() {
 
             <p>
                 Saiba mais em:
-                <a href='https://residenciaregional.jfrn.jus.br/' alt='Site da Residência Regional'>
+                <a href='https://residenciaregional.jfrn.jus.br/' target="_blank">
                       <strong> residenciaregional.jfrn.jus.br</strong>
                 </a>
             </p>
-
+            </div>
             <Rodape />
         </div>
     );
