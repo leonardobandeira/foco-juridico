@@ -5,7 +5,7 @@ import AuthInput from "../form/Input";
 import Botao from "../form/Botao";
 import Logo from "../templete/Logo";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
-import JaTenhoCadastro from "./JaTenhoCadastro";
+import LinkInformativo from "./LinkInformativo";
 
 export default function SolicitarAcesso() {
     const [email, setEmail] = useState('');
@@ -36,7 +36,7 @@ export default function SolicitarAcesso() {
                 </Formulario>
             </div>
 
-            <JaTenhoCadastro />
+            <LinkInformativo texto="Já tenho um cadastro." texto2="Entrar" rota=""/>
         </div>
     );
 }

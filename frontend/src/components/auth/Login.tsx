@@ -4,7 +4,7 @@ import AuthInput from "../form/Input";
 import Botao from "../form/Botao";
 import Logo from "../templete/Logo";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
-import JaTenhoCadastro from "./JaTenhoCadastro";
+import  LinkInformativo from "./LinkInformativo";
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -43,7 +43,7 @@ export default function Login() {
                 </Formulario>
             </div>
 
-            <JaTenhoCadastro />
+            <LinkInformativo texto="É novo aqui?" texto2="Registre-se" rota=""/>
         </div>
     );
 }
