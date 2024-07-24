@@ -1,28 +1,32 @@
-import { createContext, useState } from "react";
+import { createContext, useState, ReactNode } from "react";
 
-type Auth = '' | 'login' | 'registrar' | 'solicitar'
-type Tema = 'dark' | ''
+type Auth = '' | 'login' | 'registrar' | 'solicitar';
+type Tema = 'dark' | '';
 
 interface AppContextProps {
-    tema: Tema
-    alternarTema: () => void
-    authPage: Auth
-    setAuthPage: () => void
+    tema: Tema;
+    alternarTema: () => void;
+    authPage: Auth;
+    setAuthPage: (value: Auth) => void;
 }
 
 const AppContext = createContext<AppContextProps>({
-    tema: null,
-    alternarTema: null,
-    authPage: null,
-    setAuthPage: null
-})
+    tema: '',
+    alternarTema: () => {},
+    authPage: '',
+    setAuthPage: () => {}
+});
 
-export function AppProvider(props) {
-    const [authPage, setAuthPage] = useState<Auth>('registrar')
-    const [tema, setTema] = useState<Tema>('')
+interface AppProviderProps {
+    children: ReactNode;
+}
+
+export function AppProvider({ children }: AppProviderProps) {
+    const [authPage, setAuthPage] = useState<Auth>('');
+    const [tema, setTema] = useState<Tema>('');
 
     function alternarTema() {
-        setTema(tema === '' ? 'dark' : '')
+        setTema(tema === '' ? 'dark' : '');
     }
 
     return (
@@ -32,9 +36,9 @@ export function AppProvider(props) {
             authPage,
             setAuthPage
         }}>
-            {props.children}
+            {children}
         </AppContext.Provider>
-    )
+    );
 }
 
-export default AppContext
+export default AppContext;
