@@ -2,8 +2,11 @@ import Formulario from "../form/Formulario";
 import Botao from "../form/Botao";
 import Banner from "./Banner";
 import Rodape from "../templete/Rodape";
+import useAppData from "../../data/hook/useAppData";
 
 export default function Inicio() {
+    const { setAuthPage } = useAppData();
+
     return (
         <div className="flex flex-col justify-between gap-y-24">
             <Banner />
@@ -12,13 +15,13 @@ export default function Inicio() {
                     texto="Login"
                     className="mt-10"
                     tipo="primario"
-                    onClick={() => { console.log('Login'); }}
+                    onClick={() => { setAuthPage('login') }}
                 />
                 <Botao
                     texto="Solicitar acesso"
                     className="mt-10"
                     tipo="secundario"
-                    onClick={() => { console.log('Solicitar acesso'); }}
+                    onClick={() => { setAuthPage('solicitar') }}
                 />
             </Formulario>
             <Rodape />

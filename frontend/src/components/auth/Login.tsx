@@ -4,7 +4,8 @@ import AuthInput from "../form/Input";
 import Botao from "../form/Botao";
 import Logo from "../templete/Logo";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
-import  LinkInformativo from "./LinkInformativo";
+import LinkInformativo from "./LinkInformativo";
+import useAppData from "../../data/hook/useAppData";
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -38,17 +39,21 @@ export default function Login() {
                         texto="Entrar"
                         className={`mt-8 w-full`}
                         tipo="primario"
-                        onClick={() => { console.log('Teste'); }}
+                        onClick={() => { console.log('Teste de entrar na app'); }}
                     />
-                    <Botao
+                    {/* <Botao
                         texto="Voltar"
                         tipo="outline"
-                        onClick={() => { console.log('Teste'); }}
-                    />
+                        onClick={() => { setAuthPage('solicitar') }}
+                    /> */}
                 </Formulario>
             </div>
 
-            <LinkInformativo texto="É novo aqui?" texto2="Registre-se" rota=""/>
+            <LinkInformativo
+                texto="É novo aqui?"
+                texto2="Registre-se"
+                rota="registrar"
+            />
         </div>
     );
 }
