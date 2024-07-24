@@ -11,11 +11,11 @@ export default function Autenticacao() {
     const { authPage } = useAppData();
 
     let ladoEsquerdo = <Banner />;
-    let ladoDireito =  null;
+    let ladoDireito = null;
     let rodape = null;
 
     if (authPage === '') {
-        ladoDireito = <Inicio />;
+        ladoDireito = <Sobre />;
         ladoEsquerdo = null;
     }
 
@@ -24,7 +24,7 @@ export default function Autenticacao() {
     }
 
     if (authPage === 'registrar') {
-        ladoDireito = <Registrar/>;
+        ladoDireito = <Registrar />;
     }
 
     if (authPage === 'solicitar') {
@@ -32,6 +32,6 @@ export default function Autenticacao() {
     }
 
     return (
-        <Quadrantes left={ladoEsquerdo} right={ladoDireito} bottom={rodape} back/>
+        <Quadrantes left={ladoEsquerdo} right={ladoDireito} bottom={rodape} back />
     );
 }

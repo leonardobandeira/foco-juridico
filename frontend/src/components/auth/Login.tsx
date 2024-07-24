@@ -40,6 +40,11 @@ export default function Login() {
                         tipo="primario"
                         onClick={() => { console.log('Teste'); }}
                     />
+                    <Botao
+                        texto="Voltar"
+                        tipo="outline"
+                        onClick={() => { console.log('Teste'); }}
+                    />
                 </Formulario>
             </div>
 
