@@ -5,6 +5,7 @@ import SolicitarAcesso from "../components/auth/SolicitarAcesso";
 import Quadrantes from "../components/templete/Quadrantes";
 import Sobre from "../components/sobre/Sobre";
 import Registrar from "../components/auth/Registrar";
+import Inicio from "../components/auth/Inicio";
 
 export default function Autenticacao() {
     const { authPage } = useAppData();
@@ -14,7 +15,7 @@ export default function Autenticacao() {
     let rodape: JSX.Element | null = null;
 
     if (authPage === '') {
-        ladoDireito = <Sobre />;
+        ladoDireito = <Inicio />;
         ladoEsquerdo = null;
     }
 
