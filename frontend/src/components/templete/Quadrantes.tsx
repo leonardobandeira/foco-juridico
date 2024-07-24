@@ -2,10 +2,10 @@ import LinkInformativo from "../auth/LinkInformativo";
 import Botao from "../form/Botao";
 
 interface QuadrantesProps {
-    left?: any;
-    right: any;
-    bottom?: any;
-    back?: boolean;
+    left: JSX.Element | null;
+    right: JSX.Element | null;
+    bottom: JSX.Element | null;
+    back: boolean;
 }
 
 export default function Quadrantes(props: QuadrantesProps) {
