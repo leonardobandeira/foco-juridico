@@ -7,7 +7,7 @@ interface MenuItemProps {
     className?: string
     onClick?: any
 }
-export default function MenuItem(props: MenuItemProps) {
+export default function MenuLateralItem(props: MenuItemProps) {
     function renderizarLink() {
         return (
             <div className={`flex flex-col justify-center items-center h-20 w-20`}>
@@ -16,7 +16,6 @@ export default function MenuItem(props: MenuItemProps) {
             </div >
         )
     }
-
     return (
         <li
             className={`hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-sky-50 flex justify-center flex-row cursor-pointer ${props.className}`}
