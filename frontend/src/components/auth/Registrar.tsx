@@ -5,10 +5,12 @@ import Botao from "../form/Botao";
 import Logo from "../templete/Logo";
 import { faEnvelope, faLock, faPhone, faUser } from "@fortawesome/free-solid-svg-icons";
 import LinkInformativo from "./LinkInformativo";
+import useAppData from "../../data/hook/useAppData";
 
 export default function Registrar() {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
+    const { setAuthPage } = useAppData();
 
     return (
         <div className={`flex flex-col items-center justify-center min-h-screen p-4 w-full`}>
@@ -62,17 +64,17 @@ export default function Registrar() {
                         texto="Registrar-se"
                         className={`mt-8 w-full`}
                         tipo="primario"
-                        onClick={() => { console.log('Teste'); }}
+                        onClick={() => { console.log('Teste de entrar na app via cadastro'); }}
                     />
-                    <Botao
+                    {/* <Botao
                         texto="Voltar"
                         tipo="outline"
-                        onClick={() => { console.log('Teste'); }}
-                    />
+                        onClick={() => { setAuthPage('login'); }}
+                    /> */}
                 </Formulario>
             </div>
 
-            <LinkInformativo texto="Já tenho um cadastro." texto2="Entrar" rota="" />
+            <LinkInformativo texto="Já tenho um cadastro." texto2="Entrar" rota="login" />
         </div>
     );
 }
