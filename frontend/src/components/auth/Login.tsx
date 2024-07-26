@@ -41,6 +41,12 @@ export default function Login() {
                         tipo="primario"
                         onClick={() => { console.log('Teste de entrar na app'); }}
                     />
+                    <Botao
+                        texto="Entrar com o Gmail"
+                        className={`mt-8 w-full`}
+                        tipo="secundario"
+                        onClick={() => { console.log('Teste de entrar na app'); }}
+                    />
                     {/* <Botao
                         texto="Voltar"
                         tipo="outline"
