@@ -36,12 +36,6 @@ export default function Sobre() {
 
             </div>
             <Rodape />
-            <Botao
-                className="mt-8"
-                texto="Voltar"
-                tipo="outline"
-                onClick={() => { console.log('Teste'); }}
-            />
         </div>
     );
 }

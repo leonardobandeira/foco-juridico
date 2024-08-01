@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import logo from '../../assets/logo/logo.svg';
 import logo_dark from '../../assets/logo/logo-dark.svg';
