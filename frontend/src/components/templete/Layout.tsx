@@ -17,10 +17,10 @@ export default function Layout(props: LayoutProps) {
         <div className={`${tema} flex flex-col h-screen w-screen`}>
             <div className={`flex flex-col w-full bg-gray-50 dark:bg-gray-600`}>
                 <MenuTopo />
-                {<Cabecario
+               {/*  <Cabecario
                     titulo={props.titulo}
                     subtitulo={props.subtitulo}
-                />}
+                /> */}
                 <Conteudo>
                     {props.children}
                 </Conteudo>

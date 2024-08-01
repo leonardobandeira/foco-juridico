@@ -5,24 +5,27 @@ interface AuthInputProps {
     label: string
     valor: any
     tipo?: 'text' | 'email' | 'password'
-    obrigatorio: boolean
+    obrigatorio?: boolean
     onChange: (novoValor: any) => void
     icone?: IconDefinition
 }
 
 export default function AuthInput(props: AuthInputProps) {
     return (
-        <div className={`flex flex-col mt-4`}>
-            <label className={`text-gray-400 font-normal tracking-wider`}>
+        <div className="flex flex-col mt-4">
+            <label className="text-gray-400 font-normal tracking-wider">
                 <span>{props.label}</span>
 
-                <div className={`flex flex-row items-center gap-4 border-b-2 border-gray-100`}>
-                    {props.icone && <FontAwesomeIcon icon={props.icone} />}
+                <div className="flex flex-row items-center gap-4 border-b-2 border-gray-100">
+                    {/* {props.icone && (
+                        <FontAwesomeIcon 
+                            icon={props.icone} 
+                            className="text-xl"  // Utilizando classe utilitária do Tailwind CSS
+                        />
+                    )} */}
 
                     <input
-                        className={`flex-grow py-2 
-                            bg-transparent focus:bg-gray-50
-                        `}
+                        className="flex-grow py-2 bg-transparent focus:bg-gray-50"
                         type={props.tipo ?? 'text'}
                         value={props.valor}
                         onChange={e => props.onChange?.(e.target.value)}
@@ -30,7 +33,6 @@ export default function AuthInput(props: AuthInputProps) {
                     />
                 </div>
             </label>
-
         </div>
     )
 }

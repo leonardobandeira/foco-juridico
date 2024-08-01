@@ -1,10 +1,11 @@
+import Titulo from "../templete/Titulo";
 import ItemLista from "./ItemLista";
 
 export default function AlertasAtivos() {
     return (
-        <div className="flex flex-col mr-16">
+        <div className="flex flex-col md:px-6 px-6">
             <div>
-                <h1 className="text-black font-semibold text-left text-3xl">Alertas ativos</h1>
+                <Titulo titulo={'Alertas ativos'} subtitulo={'Alertas recentes'} />
             </div>
             <ItemLista />
             <ItemLista />

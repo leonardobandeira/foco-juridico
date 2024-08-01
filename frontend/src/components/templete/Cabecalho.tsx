@@ -12,7 +12,7 @@ export default function Cabecario(props: CabecarioProps) {
     const { tema, alternarTema } = useAppData()
 
     return (
-        <div>
+        <div className="p-6">
             <Titulo titulo={props.titulo} subtitulo={props.subtitulo} />
             <div className={`flex flex-grow justify-end`}>
                 <BotaoAlternarTema tema={tema} alternarTema={alternarTema} />
