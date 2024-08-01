@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import Formulario from "../form/Formulario";
 import AuthInput from "../form/Input";

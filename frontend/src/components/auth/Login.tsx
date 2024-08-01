@@ -1,11 +1,11 @@
+"use client";
 import { useState } from "react";
-import Formulario from "../form/Formulario";
-import AuthInput from "../form/Input";
-import Botao from "../form/Botao";
-import Logo from "../templete/Logo";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
-import LinkInformativo from "./LinkInformativo";
-import useAppData from "../../data/hook/useAppData";
+import Logo from '../templete/Logo';
+import Botao from '../form/Botao';
+import Formulario from '../form/Formulario';
+import AuthInput from '../form/Input';
+import LinkInformativo from './LinkInformativo';
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -24,7 +24,6 @@ export default function Login() {
                         tipo="email"
                         valor={email}
                         onChange={setEmail}
-                        obrigatorio
                         icone={faEnvelope}
                     />
                     <AuthInput
@@ -32,7 +31,6 @@ export default function Login() {
                         tipo="password"
                         valor={senha}
                         onChange={setSenha}
-                        obrigatorio
                         icone={faLock}
                     />
                     <Botao

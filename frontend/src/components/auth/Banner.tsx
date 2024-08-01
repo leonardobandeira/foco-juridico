@@ -1,7 +1,7 @@
 import Image from "next/image";
 import banner from '../../assets/banner/banner.svg';
 
-export default function Logo() {
+export default function Banner() {
     return (
         <Image
             src={banner}
