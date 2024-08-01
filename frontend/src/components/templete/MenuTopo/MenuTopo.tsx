@@ -20,7 +20,7 @@ export default function MenuTopo(props: MenuTopoProps) {
                 <ItemMenu path="/">
                     <User className="mr-2 h-4 w-4" />Meus dados
                 </ItemMenu>
-                <ItemMenu path="/">
+                <ItemMenu path="admin/sobre">
                     <Copyright className="mr-2 h-4 w-4" />Sobre nós
                 </ItemMenu>
                 <ItemMenu path="/" style="text-red-500">

@@ -3,15 +3,23 @@ import ItemLista from "./ItemLista";
 
 export default function AlertasAtivos() {
     return (
-        <div className="flex flex-col md:px-6 px-6">
-            <div>
+        <div className={`
+        flex flex-col px-8 min-w-[350] mb-8
+        bg-white rounded-lg shadow-lg 
+        `}>
+            <div className={`
+                border-b border-gray-400 py-2 mt-3
+            `}>
                 <Titulo titulo={'Alertas ativos'} subtitulo={'Alertas recentes'} />
             </div>
-            <ItemLista />
-            <ItemLista />
-            <ItemLista />
-            <ItemLista />
-            <ItemLista />
+
+            <div className="">
+                <ItemLista />
+                <ItemLista />
+                <ItemLista />
+                <ItemLista />
+                <ItemLista />
+            </div>
         </div>
     )
 }

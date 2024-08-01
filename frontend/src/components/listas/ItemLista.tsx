@@ -3,7 +3,7 @@ import { faCircleArrowUp, faCircleArrowDown } from "@fortawesome/free-solid-svg-
 
 export default function ItemLista() {
     return (
-        <div className="my-2 p-2 flex items-center">
+        <div className="my-2 p-2 flex items-center border-b border-gray-100">
             <FontAwesomeIcon icon={faCircleArrowUp} className="text-base1 text-5xl" />
             <div className="w-2/3 flex flex-col ml-4">
                 <strong className="text-black">Alerta 1</strong>
