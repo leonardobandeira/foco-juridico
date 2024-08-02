@@ -5,8 +5,8 @@ import MenuLateral from "./MenuLateral/MenuLateral"
 import MenuTopo from "./MenuTopo/MenuTopo"
 
 interface LayoutProps {
-    titulo: string
-    subtitulo: string
+    titulo?: string
+    subtitulo?: string
     children?: any
 }
 
