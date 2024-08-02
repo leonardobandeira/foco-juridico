@@ -1,6 +1,6 @@
 import Botao from "./Botao";
 
-export default function Formulario(props) {
+export default function Formulario(props:any) {
     return (
         <form className={`my-6`}>
             <h1 className={`flex items-center font-bold text-2xl text-base1 md:text-3xl tracking-wider`}>

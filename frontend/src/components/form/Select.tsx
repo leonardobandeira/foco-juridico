@@ -1,16 +1,16 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { ReactNode } from "react"
 
 interface AuthInputProps {
     label: string
     valor: any
-    tipo?: 'text' | 'email' | 'password'
     obrigatorio?: boolean
     onChange?: (novoValor: any) => void
-    icone?: IconDefinition
+    children: ReactNode
 }
 
-export default function Input(props: AuthInputProps) {
+export default function Select(props: AuthInputProps) {
     return (
         <div className="flex flex-col mt-4">
             <label className="text-gray-400 font-normal tracking-wider">
@@ -24,13 +24,14 @@ export default function Input(props: AuthInputProps) {
                         />
                     )} */}
 
-                    <input
-                        className="flex-grow py-2 bg-transparent focus:bg-gray-50 text-black"
-                        type={props.tipo ?? 'text'}
+                    <select
+                        className="flex-grow py-2 text-black bg-transparent focus:bg-gray-50"
                         value={props.valor}
                         onChange={e => props.onChange?.(e.target.value)}
                         required={props.obrigatorio}
-                    />
+                    >
+                        {props.children}
+                    </select>
                 </div>
             </label>
         </div>
