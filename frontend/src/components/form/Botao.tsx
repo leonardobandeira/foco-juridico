@@ -9,7 +9,7 @@ interface BotaoProps {
 }
 
 export default function Botao({ texto, tipo = 'primario', onClick, className }: BotaoProps) {
-    const defaultClasses = `rounded-xl font-semibold`;
+    const defaultClasses = `rounded-xl font-semibold button`;
     let tipoClasses = ''
 
     if (tipo === 'primario') {
