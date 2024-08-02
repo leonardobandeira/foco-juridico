@@ -11,7 +11,7 @@ export default function MenuTopo(props: MenuTopoProps) {
         <div className={`w-full flex flex-row justify-between items-center mb-4 bg-gray-100 p-4`}>
             <Logo classes={`w-[120px]`} />
             <CartaoPessoal>
-                <span className={`flex items-center text-black font-semibold flex justify-center p-1.5 text-lg bg-gray-50 border-b border-base2`}>
+                <span className={`flex items-center text-black font-semibold justify-center p-1.5 text-lg bg-gray-50 border-b border-base2`}>
                     <Settings className="mr-2 h-5 w-5" />Minha Conta
                 </span>
                 <ItemMenu path="/">
