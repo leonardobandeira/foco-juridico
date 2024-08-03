@@ -5,6 +5,7 @@ import Botao from "@/components/form/Botao";
 import Formulario from "@/components/form/Formulario";
 import Input from "@/components/form/Input";
 import Option from "@/components/form/ItemSelect";
+import RangeAtingir from "@/components/form/RangeAtingir";
 import RangerFrequencia from "@/components/form/RangerFrequencia";
 import Select from "@/components/form/Select";
 import AlertasAtivos from "@/components/listas/AlertasAtivos";
@@ -20,7 +21,7 @@ export default function Home() {
     const [indicador, setIndicador] = useState('Processos com mais de 2 anos');
     const [frequencia, setFrequencia] = useState(1);
     const [bater, setBater] = useState('Alerta');
-    const [proximo, setProximo] = useState(true);
+    const [proximo, setProximo] = useState(false);
 
     return (
         <Layout>
@@ -52,7 +53,7 @@ export default function Home() {
                     {proximo && (
                         <Formulario titulo="Criar alerta">
                             <RangerFrequencia frequencia={frequencia} onChange={setFrequencia} />
-                            <RangerFrequencia label="Receber alerta quando atingir o valor:" subtexto="Valor máximo" valor={bater} onChange={setBater} />
+                            <RangeAtingir  />
                             <Botao
                                 texto="Finalizar"
                                 className={`mt-8 w-full`}
