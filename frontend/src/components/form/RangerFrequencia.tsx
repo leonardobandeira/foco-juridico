@@ -31,7 +31,6 @@ export default function RangerFrequencia(props: AuthInputProps) {
         setResto(restoCalculado);
     }, [dias]);
 
-    // Verifica se o resto é diferente de 0
     const exibirMeio = resto > 0;
 
     return (
