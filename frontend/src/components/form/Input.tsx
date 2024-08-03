@@ -2,12 +2,13 @@ import { IconDefinition } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 interface AuthInputProps {
-    label: string
+    label?: string
     valor: any
-    tipo?: 'text' | 'email' | 'password'
+    tipo?: 'text' | 'email' | 'password' | 'number'
     obrigatorio?: boolean
     onChange?: (novoValor: any) => void
     icone?: IconDefinition
+    class?: string
 }
 
 export default function Input(props: AuthInputProps) {
@@ -25,7 +26,7 @@ export default function Input(props: AuthInputProps) {
                     )} */}
 
                     <input
-                        className="flex-grow py-2 bg-transparent focus:bg-gray-50 text-black"
+                        className={`flex-grow py-2 bg-transparent focus:bg-gray-50 text-black ${props.class}`}
                         type={props.tipo ?? 'text'}
                         value={props.valor}
                         onChange={e => props.onChange?.(e.target.value)}
