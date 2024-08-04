@@ -17,7 +17,7 @@ export default function MenuTopo(props: MenuTopoProps) {
                 <ItemMenu path="admin/alerta">
                     <AlertCircle className="mr-2 h-4 w-4" />Criar Alerta
                 </ItemMenu>
-                <ItemMenu path="/">
+                <ItemMenu path="admin/meus-dados">
                     <User className="mr-2 h-4 w-4" />Meus dados
                 </ItemMenu>
                 <ItemMenu path="admin/sobre">
