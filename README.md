@@ -30,5 +30,5 @@ O objetivo geral é desenvolver uma plataforma que automatize o monitoramento do
 ## Contato
 #### Para mais informações, entre em contato:
 
-Nome: **Leonardo Bandeira de Lucena**
-E-mail: [lucena.lbd@gmail.com](lucena.lbd@gmail.com)
+###### Nome: **Leonardo Bandeira de Lucena**
+###### E-mail: [lucena.lbd@gmail.com](lucena.lbd@gmail.com)
