@@ -1,13 +1,16 @@
-"use client"; // Garante que o código seja executado no lado do cliente
+"use client"; 
 
-import { createContext, ReactNode, useState } from 'react';
-import { useRouter } from 'next/router';
+import { createContext, ReactNode, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Usuario from '@/model/Usuario';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import cookies from 'js-cookie';
 
 interface AuthContextProps {
     usuario: Usuario;
     loginGoogle: () => Promise<void>;
+    logout: () => Promise<void>;
 }
 
 const defaultUsuario: Usuario = {
@@ -21,7 +24,8 @@ const defaultUsuario: Usuario = {
 
 const defaultAuthContext: AuthContextProps = {
     usuario: defaultUsuario,
-    loginGoogle: async () => { }
+    loginGoogle: async () => {},
+    logout: async () => {}
 };
 
 const AuthContext = createContext<AuthContextProps>(defaultAuthContext);
@@ -30,37 +34,73 @@ interface AuthProviderProps {
     children: ReactNode;
 }
 
-async function usuarioNormalizado(usuarioFirebase: firebase.User) {
-    const token = await usuarioFirebase.getIdToken()
-
+async function usuarioNormalizado(usuarioFirebase: firebase.User): Promise<Usuario> {
+    const token = await usuarioFirebase.getIdToken();
     return {
         uid: usuarioFirebase.uid,
-        nome: usuarioFirebase.displayName,
-        email: usuarioFirebase.email,
+        nome: usuarioFirebase.displayName || '',
+        email: usuarioFirebase.email || '',
         token,
-        provedor: usuarioFirebase.providerData[0]?.providerId,
-        imagemUrl: usuarioFirebase.photoURL
+        provedor: usuarioFirebase.providerData[0]?.providerId || '',
+        imagemUrl: usuarioFirebase.photoURL || ''
+    };
+}
+
+function gerenciarCookie(logado: boolean) {
+    if (logado) {
+        cookies.set('admin-foco-juridico-auth', logado.toString(), {
+            expires: 7
+        });
+    } else {
+        cookies.remove('admin-foco-juridico-auth');
     }
 }
 
 export function AuthProvider({ children }: AuthProviderProps) {
     const [usuario, setUsuario] = useState<Usuario>(defaultUsuario);
+    const [carregando, setCarregando] = useState<boolean>(true);
     const router = useRouter();
 
-    async function loginGoogle() {
-        const resp = await firebase.auth().signInWithPopup(
-            new firebase.auth.GoogleAuthProvider()
-        )
-
-        if (resp.user?.email) {
-            const usuario = await usuarioNormalizado(resp.user)
-            setUsuario(usuario)
-            router.push('/admin')
+    async function configurarSessao(usuarioFirebase: firebase.User | null) {
+        if (usuarioFirebase?.email) {
+            const usuario = await usuarioNormalizado(usuarioFirebase);
+            setUsuario(usuario);
+            gerenciarCookie(true);
+            setCarregando(false);
+            return usuario.email;
+        } else {
+            setUsuario(defaultUsuario);
+            gerenciarCookie(false);
+            setCarregando(false);
+            return false;
         }
     }
 
+    async function loginGoogle() {
+        const resp = await firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider());
+        if (resp.user) {
+            await configurarSessao(resp.user);
+            router.push('/admin');
+        }
+    }
+
+    async function logout() {
+        await firebase.auth().signOut();
+        await configurarSessao(null);
+        router.push('/login');
+    }
+
+    useEffect(() => {
+        const cancelarObserver = firebase.auth().onIdTokenChanged(configurarSessao);
+        return () => cancelarObserver();
+    }, []);
+
+    if (carregando) {
+        return <div>Carregando...</div>;
+    }
+
     return (
-        <AuthContext.Provider value={{ usuario, loginGoogle }}>
+        <AuthContext.Provider value={{ usuario, loginGoogle, logout }}>
             {children}
         </AuthContext.Provider>
     );
