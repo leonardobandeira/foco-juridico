@@ -1,5 +1,5 @@
 import useAppData from "../../data/hook/useAppData";
-import { Auth, Tema } from '../../context/types'
+import { Auth, Tema } from '../../data/context/types'
 
 interface LinkInformativo {
     texto: string

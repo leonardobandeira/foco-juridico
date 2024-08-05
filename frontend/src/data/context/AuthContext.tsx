@@ -3,6 +3,7 @@
 import { createContext, ReactNode, useState } from 'react';
 import { useRouter } from 'next/router';
 import Usuario from '@/model/Usuario';
+import firebase from 'firebase';
 
 interface AuthContextProps {
     usuario: Usuario;
@@ -20,7 +21,7 @@ const defaultUsuario: Usuario = {
 
 const defaultAuthContext: AuthContextProps = {
     usuario: defaultUsuario,
-    loginGoogle: async () => {}
+    loginGoogle: async () => { }
 };
 
 const AuthContext = createContext<AuthContextProps>(defaultAuthContext);
@@ -29,18 +30,32 @@ interface AuthProviderProps {
     children: ReactNode;
 }
 
+async function usuarioNormalizado(usuarioFirebase: firebase.User) {
+    const token = await usuarioFirebase.getIdToken()
+
+    return {
+        uid: usuarioFirebase.uid,
+        nome: usuarioFirebase.displayName,
+        email: usuarioFirebase.email,
+        token,
+        provedor: usuarioFirebase.providerData[0]?.providerId,
+        imagemUrl: usuarioFirebase.photoURL
+    }
+}
+
 export function AuthProvider({ children }: AuthProviderProps) {
     const [usuario, setUsuario] = useState<Usuario>(defaultUsuario);
     const router = useRouter();
 
     async function loginGoogle() {
-        try {
-            console.log("Login com o Google");
-            // Implementar lógica de autenticação com o Google
-            // Atualize o estado do usuário conforme necessário
-            router.push('/admin');
-        } catch (error) {
-            console.error('Erro ao fazer login com Google:', error);
+        const resp = await firebase.auth().signInWithPopup(
+            new firebase.auth.GoogleAuthProvider()
+        )
+
+        if (resp.user?.email) {
+            const usuario = await usuarioNormalizado(resp.user)
+            setUsuario(usuario)
+            router.push('/admin')
         }
     }
 
