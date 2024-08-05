@@ -1,4 +1,4 @@
-"use client"; 
+"use client";
 
 import { createContext, ReactNode, useState } from "react";
 import { Auth, Tema } from "./types";
@@ -10,7 +10,14 @@ interface AppContextProps {
     setAuthPage: (value: Auth) => void;
 }
 
-const AppContext = createContext<AppContextProps | undefined>(undefined);
+const defaultContext: AppContextProps = {
+    tema: '',
+    alternarTema: () => { },
+    authPage: 'login',
+    setAuthPage: () => { },
+};
+
+const AppContext = createContext<AppContextProps>(defaultContext);
 
 interface AppProviderProps {
     children: ReactNode;
