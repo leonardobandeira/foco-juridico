@@ -7,13 +7,34 @@ import Botao from '../form/Botao';
 import Formulario from '../form/Formulario';
 import AuthInput from '../form/Input';
 import LinkInformativo from './LinkInformativo';
-import useAuthData from "@/data/hook/useAuthData";
+//import { cookies } from 'next/headers';
+//import { SESSION_COOKIE_NAME } from './../../lib/constants'; // added
+
+import { useUserSession } from '../../data/hook/use-user-session';
+import { signInWithGoogle, signOutWithGoogle } from '../../lib/firebase/auth';
+import { createSession, removeSession } from '../../actions/auth-actions';
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
 
-    const { usuario, loginGoogle } = useAuthData();
+    // Pega o cookie com o usuário logado
+    //const session = cookies().get(SESSION_COOKIE_NAME)?.value || null;
+
+    //const userSessionId = useUserSession(session);
+    // serve para pegar o id do usuário logado, se tiver
+
+    const handleSignIn = async () => {
+        const userUid = await signInWithGoogle();
+        if (userUid) {
+            await createSession(userUid);
+        }
+    };
+
+    const handleSignOut = async () => {
+        await signOutWithGoogle();
+        await removeSession();
+    };
 
     return (
         <div className={`flex flex-col items-center justify-center min-h-screen p-4 w-full`}>
@@ -41,23 +62,26 @@ export default function Login() {
                         texto="Entrar"
                         className={`mt-8 w-full`}
                         tipo="primario"
-                        onClick={() => { console.log('Teste de entrar na app'); }}
+                        onClick={() => { }}
                     />
-                  
+
+
                     <Botao
                         texto="Entrar com o Gmail"
                         className={`mt-8 w-full`}
                         tipo="secundario"
-                        onClick={loginGoogle}
+                        onClick={() => { }}
                     />
-                </Formulario> 
-                
+                </Formulario>
+
                 <LinkInformativo
                     texto="É novo aqui?"
                     texto2="Registre-se"
                     rota="registrar"
                 />
             </div>
+            <button onClick={handleSignIn} >Entrar</button>
+{process.env.NEXT_PUBLIC_API_KEY}
         </div>
     );
 }
