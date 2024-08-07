@@ -1,9 +1,9 @@
-"use client";
+/* "use client";
 
 import { createContext, ReactNode, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Usuario from '@/model/Usuario';
-import firebase from '@/lib/firebase/config'; 
+import firebase from '@/lib/firebase/config'; // Atualize a importação para usar o arquivo de configuração
 import cookies from 'js-cookie';
 
 interface AuthContextProps {
@@ -76,10 +76,14 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
 
     async function loginGoogle() {
-        const resp = await firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider());
-        if (resp.user) {
-            await configurarSessao(resp.user);
-            router.push('/admin');
+        try {
+            const resp = await firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider());
+            if (resp.user) {
+                await configurarSessao(resp.user);
+                router.push('/admin');
+            }
+        } catch (error) {
+            console.error("Erro ao fazer login com Google: ", error);
         }
     }
 
@@ -106,3 +110,4 @@ export function AuthProvider({ children }: AuthProviderProps) {
 }
 
 export default AuthContext;
+ */
