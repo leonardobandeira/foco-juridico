@@ -87,7 +87,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     async function logout() {
         await firebase.auth().signOut();
         await configurarSessao(null);
-        router.push('/autenticacao');
+        router.push('/login');
     }
 
     useEffect(() => {
@@ -96,7 +96,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }, []);
 
     if (carregando) {
-        return "Carregando...";
+        return <div>Carregando...</div>;
     }
 
     return (
