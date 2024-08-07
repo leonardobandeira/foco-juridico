@@ -21,7 +21,7 @@ export default function Input(props: AuthInputProps) {
                     {/* {props.icone && (
                         <FontAwesomeIcon 
                             icon={props.icone} 
-                            className="text-xl"  // Utilizando classe utilitária do Tailwind CSS
+                            className="text-xl" 
                         />
                     )} */}
 

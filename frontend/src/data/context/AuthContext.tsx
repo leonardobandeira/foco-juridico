@@ -1,10 +1,9 @@
-"use client"; 
+"use client";
 
 import { createContext, ReactNode, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Usuario from '@/model/Usuario';
-import firebase from 'firebase/app';
-import 'firebase/auth';
+import firebase from '@/lib/firebase/config'; 
 import cookies from 'js-cookie';
 
 interface AuthContextProps {
@@ -87,7 +86,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     async function logout() {
         await firebase.auth().signOut();
         await configurarSessao(null);
-        router.push('/autenticacao');
+        router.push('/login');
     }
 
     useEffect(() => {
@@ -96,7 +95,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }, []);
 
     if (carregando) {
-        return "Carregando...";
+        return <div>Carregando...</div>;
     }
 
     return (
