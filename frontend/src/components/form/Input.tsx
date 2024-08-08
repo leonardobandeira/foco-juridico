@@ -1,13 +1,10 @@
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-
 interface AuthInputProps {
     label?: string
     valor: any
     tipo?: 'text' | 'email' | 'password' | 'number'
     obrigatorio?: boolean
     onChange?: (novoValor: any) => void
-    icone?: IconDefinition
+    icone?: null
     class?: string
 }
 

@@ -1,6 +1,3 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
-
 interface BotaoProps {
     texto?: string;
     tipo?: 'primario' | 'secundario' | 'outline' | 'voltar';
@@ -27,7 +24,7 @@ export default function Botao({ texto, tipo = 'primario', onClick, className }: 
 
     return (
         <button onClick={onClick} className={`${defaultClasses} ${tipoClasses} ${className}`}>
-            {tipo === 'voltar' && <FontAwesomeIcon className="md:text-5xl text-3xl text-base2" icon={faAngleLeft} />}
+            {tipo === 'voltar'}
             {tipo !== 'voltar' && texto}
         </button>
     );

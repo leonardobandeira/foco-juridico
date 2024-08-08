@@ -4,7 +4,6 @@ import Formulario from "../form/Formulario";
 import AuthInput from "../form/Input";
 import Botao from "../form/Botao";
 import Logo from "../templete/Logo";
-import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import LinkInformativo from "./LinkInformativo";
 
 export default function SolicitarAcesso() {
@@ -24,7 +23,6 @@ export default function SolicitarAcesso() {
                         valor={email}
                         onChange={setEmail}
                         obrigatorio
-                        icone={faEnvelope}
                     />
 
                     <Botao

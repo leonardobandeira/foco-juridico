@@ -4,7 +4,6 @@ import Formulario from "../form/Formulario";
 import AuthInput from "../form/Input";
 import Botao from "../form/Botao";
 import Logo from "../templete/Logo";
-import { faEnvelope, faLock, faPhone, faUser } from "@fortawesome/free-solid-svg-icons";
 import LinkInformativo from "./LinkInformativo";
 import useAppData from "../../data/hook/useAppData";
 
@@ -27,7 +26,6 @@ export default function Registrar() {
                         valor={email}
                         onChange={setEmail}
                         obrigatorio
-                        icone={faUser}
                     />
                     <AuthInput
                         label="Número de telefone"
@@ -35,7 +33,6 @@ export default function Registrar() {
                         valor={email}
                         onChange={setEmail}
                         obrigatorio
-                        icone={faPhone}
                     />
                     <AuthInput
                         label="Endereço de Email"
@@ -43,7 +40,6 @@ export default function Registrar() {
                         valor={email}
                         onChange={setEmail}
                         obrigatorio
-                        icone={faEnvelope}
                     />
                     <AuthInput
                         label="Senha"
@@ -51,7 +47,6 @@ export default function Registrar() {
                         valor={senha}
                         onChange={setSenha}
                         obrigatorio
-                        icone={faLock}
                     />
                     <AuthInput
                         label="Confirme a senha"
@@ -59,7 +54,6 @@ export default function Registrar() {
                         valor={senha}
                         onChange={setSenha}
                         obrigatorio
-                        icone={faLock}
                     />
                     <Botao
                         texto="Registrar-se"

@@ -1,19 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import Logo from '../templete/Logo';
 import Botao from '../form/Botao';
 import Formulario from '../form/Formulario';
 import AuthInput from '../form/Input';
 import LinkInformativo from './LinkInformativo';
-import useAuthData from "@/data/hook/useAuthData";
+import useAuth from "@/data/hook/useAuth";
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
 
-    const { usuario, loginGoogle } = useAuthData();
+    const { cadastrar, login, loginGoogle } = useAuth();
 
     return (
         <div className={`flex flex-col items-center justify-center min-h-screen p-4 w-full`}>
@@ -28,14 +27,12 @@ export default function Login() {
                         tipo="email"
                         valor={email}
                         onChange={setEmail}
-                        icone={faEnvelope}
                     />
                     <AuthInput
                         label="Senha"
                         tipo="password"
                         valor={senha}
                         onChange={setSenha}
-                        icone={faLock}
                     />
                     <Botao
                         texto="Entrar"
@@ -48,9 +45,16 @@ export default function Login() {
                         texto="Entrar com o Gmail"
                         className={`mt-8 w-full`}
                         tipo="secundario"
-                        onClick={loginGoogle}
+                        onClick={()=>{}}
                     />
                 </Formulario> 
+
+                <button onClick={loginGoogle} className={`
+                    w-full bg-red-500 hover:bg-red-400
+                    text-white rounded-lg px-4 py-3
+                `}>
+                    Entrar com Google
+                </button>
                 
                 <LinkInformativo
                     texto="É novo aqui?"
