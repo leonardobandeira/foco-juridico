@@ -81,7 +81,6 @@ export default function Login() {
                 />
             </div>
             <button onClick={handleSignIn} >Entrar</button>
-{process.env.NEXT_PUBLIC_API_KEY}
         </div>
     );
 }
