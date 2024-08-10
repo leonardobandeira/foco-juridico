@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true, // Recomendado para detectar problemas potenciais
-  swcMinify: true, // Usar o SWC para minificar o código
+  reactStrictMode: true, 
+  swcMinify: true,
+  images: {
+    domains: ['lh3.googleusercontent.com'],
+  },
 };
 
 export default nextConfig;
