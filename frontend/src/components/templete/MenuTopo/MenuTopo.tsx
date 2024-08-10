@@ -3,16 +3,15 @@ import CartaoPessoal from "./CartaoPessoal";
 import ItemMenu from "./ItemMenu";
 import { AlertCircle, User, Copyright, LogOut, Settings } from "lucide-react"
 import { signOutWithGoogle } from './../../../lib/firebase/auth';
-import { removeSession } from './../../../actions/auth-actions';
+import { removeCookie } from '../../../actions/cookies';
 
 interface MenuTopoProps { }
 
 export default function MenuTopo(props: MenuTopoProps) {
     const handleSignOut = async () => {
         await signOutWithGoogle();
-        await removeSession();
+        await removeCookie();
     };
-
 
     return (
         <div className={`w-full flex flex-row justify-between items-center mb-4 bg-gray-100 p-4`}>

@@ -7,33 +7,46 @@ import Botao from '../form/Botao';
 import Formulario from '../form/Formulario';
 import AuthInput from '../form/Input';
 import LinkInformativo from './LinkInformativo';
-//import { cookies } from 'next/headers';
-//import { SESSION_COOKIE_NAME } from './../../lib/constants'; // added
-
 import { useUserSession } from '../../data/hook/use-user-session';
 import { signInWithGoogle, signOutWithGoogle } from '../../lib/firebase/auth';
-import { createSession, removeSession } from '../../actions/auth-actions';
+import { createCookie, removeCookie } from '../../actions/cookies';
+import { type User } from 'firebase/auth';
+import Usuario from "@/model/Usuario";
+import useAppData from "@/data/hook/useAppData";
+
+async function usuarioNormalizado(usuarioFirebase: User): Promise<Usuario> {
+    const token = await usuarioFirebase.getIdToken();
+    return {
+        uid: usuarioFirebase.uid,
+        nome: usuarioFirebase.displayName || '',
+        email: usuarioFirebase.email || '',
+        token,
+        provedor: usuarioFirebase.providerData[0]?.providerId || '',
+        imagemUrl: usuarioFirebase.photoURL || ''
+    };
+}
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
-
-    // Pega o cookie com o usuário logado
-    //const session = cookies().get(SESSION_COOKIE_NAME)?.value || null;
-
-    //const userSessionId = useUserSession(session);
-    // serve para pegar o id do usuário logado, se tiver
+    const { setUsuario } = useAppData();
 
     const handleSignIn = async () => {
-        const userUid = await signInWithGoogle();
-        if (userUid) {
-            await createSession(userUid);
+        const user = await signInWithGoogle();
+        const userUid = user?.uid;
+
+        if (user) {
+            const usuario = await usuarioNormalizado(user);
+            setUsuario(usuario);
+            if (userUid) {
+                await createCookie(userUid);
+            }
         }
     };
 
     const handleSignOut = async () => {
         await signOutWithGoogle();
-        await removeSession();
+        await removeCookie();
     };
 
     return (
