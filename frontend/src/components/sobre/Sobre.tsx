@@ -1,4 +1,4 @@
-import Botao from "../form/Botao";
+import Botao from "../../app/shared/form/Botao";
 import Logo from "../../app/shared/Logo";
 import Rodape from "../../app/shared/Marketing";
 import { IconeEmail, IconeGithub, IconeLinkedin } from "../../app/shared/icons";

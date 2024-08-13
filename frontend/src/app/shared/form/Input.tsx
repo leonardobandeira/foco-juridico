@@ -20,7 +20,7 @@ export default function Input(props: AuthInputProps) {
                 <div className="flex flex-row items-center gap-4 border-b-2 border-gray-100">
                     {Icon && <Icon className="mr-2 h-4 w-4 text-gray-500" />}
                     <input
-                        className={`py-2 bg-transparent focus:bg-gray-50 text-black ${className}`}
+                        className={`flex-grow py-2 bg-transparent focus:bg-gray-50 text-black ${className}`}
                         type={tipo ?? 'text'}
                         value={valor}
                         onChange={e => onChange?.(e.target.value)}

@@ -1,13 +1,13 @@
 "use client";
 
 import Banner from "@/components/auth/Banner";
-import Botao from "@/components/form/Botao";
-import Formulario from "@/components/form/Formulario";
-import Input from "@/components/form/Input";
-import Option from "@/components/form/ItemSelect";
-import RangeAtingir from "@/components/form/RangeAtingir";
-import RangerFrequencia from "@/components/form/RangerFrequencia";
-import Select from "@/components/form/Select";
+import Botao from "@/app/shared/form/Botao";
+import Formulario from "@/app/shared/form/Formulario";
+import Input from "@/app/shared/form/Input";
+import Option from "@/app/shared/form/ItemSelect";
+import RangeAtingir from "@/app/shared/form/RangeAtingir";
+import RangerFrequencia from "@/app/shared/form/RangerFrequencia";
+import Select from "@/app/shared/form/Select";
 import AlertasAtivos from "@/components/listas/AlertasAtivos";
 import Layout from "@/components/templete/Layout";
 import { useState } from "react";

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Botao from "../form/Botao";
-import Formulario from "../form/Formulario";
-import Input from "../form/Input";
+import Botao from "../../app/shared/form/Botao";
+import Formulario from "../../app/shared/form/Formulario";
+import Input from "../../app/shared/form/Input";
 import Foto from "../templete/MenuTopo/Foto";
 
 export default function EditarPerfil() {

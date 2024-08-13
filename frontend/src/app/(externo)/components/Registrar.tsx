@@ -1,12 +1,12 @@
 "use client";
 import { useState } from "react";
-import Formulario from "../../../components/form/Formulario";
-import Input from "../../../components/form/Input";
-import Botao from "../../../components/form/Botao";
+import Formulario from "../../shared/form/Formulario";
+import Input from "../../shared/form/Input";
+import Botao from "../../shared/form/Botao";
 import Logo from "../../shared/Logo";
 import LinkInformativo from "./LinkInformativo";
 import useAppData from "../../../data/hook/useAppData";
-import TituloFormulario from "@/components/form/TituloFormulario";
+import TituloFormulario from "@/app/shared/form/TituloFormulario";
 import { User, Mail, Phone, Lock, } from "lucide-react"
 
 export default function Registrar() {

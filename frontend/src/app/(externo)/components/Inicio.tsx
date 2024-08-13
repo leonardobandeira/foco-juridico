@@ -1,5 +1,5 @@
-import Formulario from "../../../components/form/Formulario";
-import Botao from "../../../components/form/Botao";
+import Formulario from "../../shared/form/Formulario";
+import Botao from "../../shared/form/Botao";
 import Banner from "../../shared/Banner";
 import Rodape from "../../shared/Marketing";
 import useAppData from "../../../data/hook/useAppData";

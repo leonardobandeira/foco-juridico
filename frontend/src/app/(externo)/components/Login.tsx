@@ -3,11 +3,11 @@
 import { useState } from "react";
 import { Mail, Lock, } from "lucide-react"
 import Logo from '../../shared/Logo';
-import Botao from '../../../components/form/Botao';
-import Formulario from '../../../components/form/Formulario';
-import Input from '../../../components/form/Input';
+import Botao from '../../shared/form/Botao';
+import Formulario from '../../shared/form/Formulario';
+import Input from '../../shared/form/Input';
 import LinkInformativo from './LinkInformativo';
-import TituloFormulario from "../../../components/form/TituloFormulario";
+import TituloFormulario from "../../shared/form/TituloFormulario";
 
 export default function Login() {
     const [email, setEmail] = useState('');

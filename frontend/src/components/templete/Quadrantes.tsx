@@ -1,5 +1,5 @@
 import LinkInformativo from "../../app/(externo)/components/LinkInformativo";
-import Botao from "../form/Botao";
+import Botao from "../../app/shared/form/Botao";
 
 interface QuadrantesProps {
     left: JSX.Element | null;
