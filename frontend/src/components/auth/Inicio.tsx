@@ -1,7 +1,7 @@
 import Formulario from "../form/Formulario";
 import Botao from "../form/Botao";
-import Banner from "./Banner";
-import Rodape from "../templete/Rodape";
+import Banner from "../../app/shared/Banner";
+import Rodape from "../../app/shared/Marketing";
 import useAppData from "../../data/hook/useAppData";
 
 export default function Inicio() {

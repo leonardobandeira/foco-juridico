@@ -11,9 +11,12 @@ export default function LinkInformativo(props: LinkInformativo) {
     const { setAuthPage } = useAppData();
 
     return (
-        <label onClick={() => { setAuthPage(props.rota) }}
+        <label
             className="text-gray-400 font-normal tracking-wider text-center ">
-            {props.texto} <span className="text-base1 font-bold cursor-pointer">{props.texto2}</span>
+            {props.texto}
+            <span className="text-base1 font-bold hover:underline cursor-pointer ml-2"
+                onClick={() => { setAuthPage(props.rota) }}>{props.texto2}
+            </span>
         </label>
     )
 }

@@ -7,7 +7,7 @@ const config = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
-	],
+  ],
   prefix: "",
   theme: {
     container: {
@@ -18,6 +18,9 @@ const config = {
       },
     },
     extend: {
+      backgroundImage: {
+        'gradient-15': 'linear-gradient(to right, #0066FF 15%, #ffffff 15% 100%)',
+      },
       colors: {
         base1: {
           DEFAULT: '#0066FF',

@@ -1,11 +1,13 @@
 "use client";
+
 import { useState } from "react";
-import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
+import { Mail, Lock, } from "lucide-react"
 import Logo from '../templete/Logo';
 import Botao from '../form/Botao';
 import Formulario from '../form/Formulario';
-import AuthInput from '../form/Input';
+import Input from '../form/Input';
 import LinkInformativo from './LinkInformativo';
+import TituloFormulario from "../form/TituloFormulario";
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -18,38 +20,38 @@ export default function Login() {
             </div>
 
             <div className={`w-full max-w-md px-4`}>
-                <Formulario titulo="Entrar">
-                    <AuthInput
+                <Formulario className="flex flex-col items-center">
+                    <TituloFormulario titulo="Entrar" />
+
+                    <Input
                         label="Endereço de Email"
                         tipo="email"
                         valor={email}
                         onChange={setEmail}
-                        icone={faEnvelope}
+                        icone={Mail}
+                        obrigatorio
                     />
-                    <AuthInput
+                    <Input
                         label="Senha"
                         tipo="password"
                         valor={senha}
                         onChange={setSenha}
-                        icone={faLock}
+                        icone={Lock}
+                        obrigatorio
                     />
                     <Botao
                         texto="Entrar"
-                        className={`mt-8 w-full`}
+                        className={`mt-8`}
                         tipo="primario"
                         onClick={() => { console.log('Teste de entrar na app'); }}
                     />
                     <Botao
                         texto="Entrar com o Gmail"
-                        className={`mt-8 w-full`}
+                        className={`bg-red-500`}
                         tipo="secundario"
                         onClick={() => { console.log('Teste de entrar na app'); }}
                     />
-                    {/* <Botao
-                        texto="Voltar"
-                        tipo="outline"
-                        onClick={() => { setAuthPage('solicitar') }}
-                    /> */}
+
                 </Formulario>
             </div>
 
