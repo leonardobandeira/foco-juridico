@@ -1,28 +1,26 @@
 "use client";
 
-import Quadrantes from "@/components/templete/Quadrantes";
+import Login from "@/components/auth/Login";
+import Registrar from "@/components/auth/Registrar";
 import useAppData from "@/data/hook/useAppData";
-import Banner from "../shared/Banner";
-import Login from "./components/Login";
-import Registrar from "./components/Registrar";
-
 
 export default function Index() {
     const { authPage } = useAppData();
 
-    let ladoEsquerdo: JSX.Element | null = <Banner />;
-    let ladoDireito: JSX.Element | null = null;
-    let rodape: JSX.Element | null = null;
+    const renderAuthPage = () => {
+        if (authPage === 'login') {
+            return <Login />;
+        }
+        if (authPage === 'registrar') {
+            return <Registrar />;
+        }
 
-    if (authPage === 'login') {
-        ladoDireito = <Login />;
-    }
-
-    if (authPage === 'registrar') {
-        ladoDireito = <Registrar />;
-    }
+        return <h1>Página não encontrada!</h1>
+    };
 
     return (
-        <Quadrantes left={ladoEsquerdo} right={ladoDireito} bottom={rodape} back={false} />
+        <div>
+            {renderAuthPage()}
+        </div>
     );
 }

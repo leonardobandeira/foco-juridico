@@ -1,17 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, Lock, } from "lucide-react"
-import Logo from '../../shared/Logo';
-import Botao from '../../shared/form/Botao';
-import Formulario from '../../shared/form/Formulario';
-import Input from '../../shared/form/Input';
+import { useRouter } from 'next/navigation'
+import { Mail, Lock } from "lucide-react"
 import LinkInformativo from './LinkInformativo';
-import TituloFormulario from "../../shared/form/TituloFormulario";
+import Link from 'next/link'
+import Botao from "@/components/form/Botao";
+import Formulario from "@/components/form/Formulario";
+import TituloFormulario from "@/components/form/TituloFormulario";
+import Logo from "@/components/Logo";
+import Input from "@/components/form/Input";
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
+    const router = useRouter()
 
     return (
         <div className={`flex flex-col items-center justify-center min-h-screen p-4 w-full`}>
@@ -29,7 +32,7 @@ export default function Login() {
                         valor={email}
                         onChange={setEmail}
                         icone={Mail}
-                        obrigatorio
+                        obrigatorio={false}
                     />
                     <Input
                         label="Senha"
@@ -37,14 +40,16 @@ export default function Login() {
                         valor={senha}
                         onChange={setSenha}
                         icone={Lock}
-                        obrigatorio
+                        obrigatorio={false}
                     />
-                    <Botao
-                        texto="Entrar"
-                        className={`mt-8`}
-                        tipo="primario"
-                        onClick={() => { console.log('Teste de entrar na app'); }}
-                    />
+                    <Link href="/home">
+                        <Botao
+                            texto="Entrar"
+                            className={`mt-8`}
+                            tipo="primario"
+                            onClick={() => { }}
+                        />
+                    </Link>
                     <Botao
                         texto="Entrar com o Gmail"
                         className={`bg-red-500`}

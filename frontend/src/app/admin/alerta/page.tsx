@@ -1,15 +1,14 @@
 "use client";
 
-import Banner from "@/components/auth/Banner";
-import Botao from "@/app/shared/form/Botao";
-import Formulario from "@/app/shared/form/Formulario";
-import Input from "@/app/shared/form/Input";
-import Option from "@/app/shared/form/ItemSelect";
-import RangeAtingir from "@/app/shared/form/RangeAtingir";
-import RangerFrequencia from "@/app/shared/form/RangerFrequencia";
-import Select from "@/app/shared/form/Select";
-import AlertasAtivos from "@/components/listas/AlertasAtivos";
-import Layout from "@/components/templete/Layout";
+import Banner from "@/components/Banner";
+import Botao from "@/components/form/Botao";
+import Formulario from "@/components/form/Formulario";
+import Input from "@/components/form/Input";
+import Option from "@/components/form/ItemSelect";
+import RangeAtingir from "@/components/form/RangeAtingir";
+import RangerFrequencia from "@/components/form/RangerFrequencia";
+import Select from "@/components/form/Select";
+import { Mail } from "lucide-react";
 import { useState } from "react";
 
 export default function Home() {
@@ -24,46 +23,46 @@ export default function Home() {
     const [proximo, setProximo] = useState(false);
 
     return (
-        <Layout>
-            <div className={`flex md:flex-row flex-col w-full justify-evenly`}>
-                <div className={`w-full max-w-md px-4`}>
-                    {!proximo && (
-                        <Formulario titulo="Criar alerta">
-                            <Input
-                                label="Nome do alerta"
-                                tipo="text"
-                                valor={nome}
-                                onChange={setNome}
-                            />
-                            <Select label="Painel monitorado" valor={painel} onChange={setPainel}>
-                                <Option texto="Tempo de Movimentação" />
-                            </Select>
-                            <Select label="Indicador monitorado" valor={indicador} onChange={setIndicador}>
-                                <Option texto="Processos com mais de 2 anos" />
-                            </Select>
-                            <Botao
-                                texto="Próximo"
-                                className={`mt-8 w-full`}
-                                tipo="primario"
-                                onClick={() => setProximo(true)}
-                            />
-                        </Formulario>
-                    )}
+        <div className={`flex md:flex-row flex-col w-full justify-evenly`}>
+            <div className={`w-full max-w-md px-4`}>
+                {!proximo && (
+                    <Formulario >
+                        <Input
+                            label="Nome do alerta"
+                            tipo="text"
+                            valor={nome}
+                            onChange={setNome}
+                            obrigatorio
+                            icone={Mail}
+                        />
+                        <Select label="Painel monitorado" valor={painel} onChange={setPainel}>
+                            <Option texto="Tempo de Movimentação" />
+                        </Select>
+                        <Select label="Indicador monitorado" valor={indicador} onChange={setIndicador}>
+                            <Option texto="Processos com mais de 2 anos" />
+                        </Select>
+                        <Botao
+                            texto="Próximo"
+                            className={`mt-8 w-full`}
+                            tipo="primario"
+                            onClick={() => setProximo(true)}
+                        />
+                    </Formulario>
+                )}
 
-                    {proximo && (
-                        <Formulario titulo="Criar alerta">
-                            <RangerFrequencia frequencia={frequencia} onChange={setFrequencia} />
-                            <RangeAtingir  />
-                            <Botao
-                                texto="Finalizar"
-                                className={`mt-8 w-full`}
-                                tipo="primario"
-                                onClick={() => setProximo(false)}
-                            />
-                        </Formulario>
-                    )}
-                </div>
+                {proximo && (
+                    <Formulario >
+                        <RangerFrequencia frequencia={frequencia} onChange={setFrequencia} />
+                        <RangeAtingir />
+                        <Botao
+                            texto="Finalizar"
+                            className={`mt-8 w-full`}
+                            tipo="primario"
+                            onClick={() => setProximo(false)}
+                        />
+                    </Formulario>
+                )}
             </div>
-        </Layout>
+        </div>
     );
 }

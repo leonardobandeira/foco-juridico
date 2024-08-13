@@ -1,3 +1,5 @@
+"use client";
+
 import { ReactNode, useState } from "react";
 import Foto from "./Foto";
 import ItemMenu from "@/components/templete/MenuTopo/ItemMenu";

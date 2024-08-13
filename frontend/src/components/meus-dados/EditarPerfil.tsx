@@ -1,8 +1,9 @@
 import { useState } from "react";
-import Botao from "../../app/shared/form/Botao";
-import Formulario from "../../app/shared/form/Formulario";
-import Input from "../../app/shared/form/Input";
+import Botao from "../../components/form/Botao";
+import Formulario from "../../components/form/Formulario";
+import Input from "../../components/form/Input";
 import Foto from "../templete/MenuTopo/Foto";
+import { MailIcon } from "lucide-react";
 
 export default function EditarPerfil() {
     const [proximo, setProximo] = useState(false);
@@ -18,24 +19,30 @@ export default function EditarPerfil() {
                 <p className="text-lg text-gray-400 font-normal">Juiz Federal</p>
             </div>
 
-            <Formulario titulo="">
+            <Formulario>
                 <Input
                     label="Nome completo"
                     tipo="text"
                     valor={nome}
                     onChange={setNome}
+                    obrigatorio
+                    icone={MailIcon}
                 />
                 <Input
                     label="Endereço de email"
                     tipo="text"
                     valor={email}
                     onChange={setEmail}
+                    obrigatorio
+                    icone={MailIcon}
                 />
                 <Input
                     label="Número de telefone"
                     tipo="text"
                     valor={telefone}
                     onChange={setTelefone}
+                    obrigatorio
+                    icone={MailIcon}
                 />
                 <Botao
                     texto="Salvat alterações"

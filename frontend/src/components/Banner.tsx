@@ -1,5 +1,5 @@
 import Image from "next/image";
-import banner from '../../assets/banner/banner.svg';
+import banner from '../assets/banner/banner.svg';
 import Marketing from "./Marketing";
 
 export default function Banner() {

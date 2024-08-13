@@ -1,13 +1,13 @@
 "use client";
 import { useState } from "react";
-import Formulario from "../../shared/form/Formulario";
-import Input from "../../shared/form/Input";
-import Botao from "../../shared/form/Botao";
-import Logo from "../../shared/Logo";
 import LinkInformativo from "./LinkInformativo";
-import useAppData from "../../../data/hook/useAppData";
-import TituloFormulario from "@/app/shared/form/TituloFormulario";
+import TituloFormulario from "@/components/form/TituloFormulario";
 import { User, Mail, Phone, Lock, } from "lucide-react"
+import Botao from "@/components/form/Botao";
+import Formulario from "@/components/form/Formulario";
+import Logo from "@/components/Logo";
+import useAppData from "@/data/hook/useAppData";
+import Input from "@/components/form/Input";
 
 export default function Registrar() {
     const [email, setEmail] = useState('');

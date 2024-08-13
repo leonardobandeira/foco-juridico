@@ -1,7 +1,7 @@
-import Botao from "../../app/shared/form/Botao";
-import Logo from "../../app/shared/Logo";
-import Rodape from "../../app/shared/Marketing";
-import { IconeEmail, IconeGithub, IconeLinkedin } from "../../app/shared/icons";
+import Botao from "../../components/form/Botao";
+import Logo from "../../components/Logo";
+import Rodape from "../../components/Marketing";
+import { IconeEmail, IconeGithub, IconeLinkedin } from "../../components/icons";
 
 export default function Sobre() {
     return (

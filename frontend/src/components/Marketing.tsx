@@ -1,5 +1,5 @@
-import TRF5 from './../../assets/logo/trf5.svg'
-import Metropole from './../../assets/logo/metropole.svg'
+import TRF5 from './../assets/logo/trf5.svg'
+import Metropole from './../assets/logo/metropole.svg'
 import Image from 'next/image'
 
 export default function Marketing() {

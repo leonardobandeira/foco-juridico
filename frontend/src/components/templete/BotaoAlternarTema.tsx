@@ -1,4 +1,4 @@
-import { IconeLua, IconeSol } from "../../app/shared/icons"
+import { IconeLua, IconeSol } from "../../components/icons"
 
 interface BotaoAlternarTemaProps {
     tema: string
