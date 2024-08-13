@@ -1,10 +1,10 @@
 "use client";
 
-import Login from "@/components/auth/Login";
-import Registrar from "@/components/auth/Registrar";
 import Quadrantes from "@/components/templete/Quadrantes";
 import useAppData from "@/data/hook/useAppData";
 import Banner from "../shared/Banner";
+import Login from "./components/Login";
+import Registrar from "./components/Registrar";
 
 
 export default function Index() {

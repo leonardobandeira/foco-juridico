@@ -1,4 +1,4 @@
-import { IconeAjustes, IconeCasa, IconeLogout, IconeNotificacoes } from "../../icons";
+import { IconeAjustes, IconeCasa, IconeLogout, IconeNotificacoes } from "../icons";
 import Logo from "../Logo";
 import MenuItem from "./MenuLateralItem";
 

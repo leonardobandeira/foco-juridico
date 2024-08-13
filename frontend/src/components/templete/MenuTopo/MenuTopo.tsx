@@ -1,4 +1,4 @@
-import Logo from "../Logo";
+import Logo from "../../../app/shared/Logo";
 import CartaoPessoal from "./CartaoPessoal";
 import ItemMenu from "./ItemMenu";
 import { AlertCircle, User, Copyright, LogOut, Settings } from "lucide-react"

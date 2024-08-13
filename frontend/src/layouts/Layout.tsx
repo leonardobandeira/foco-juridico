@@ -1,8 +1,7 @@
-import useAppData from "../../data/hook/useAppData"
-import Cabecario from "./Cabecalho"
-import Conteudo from "./Conteudo"
-import MenuLateral from "./MenuLateral/MenuLateral"
-import MenuTopo from "./MenuTopo/MenuTopo"
+import Conteudo from "@/components/templete/Conteudo"
+import MenuTopo from "@/components/templete/MenuTopo/MenuTopo"
+import useAppData from "@/data/hook/useAppData"
+
 
 interface LayoutProps {
     titulo?: string
@@ -17,10 +16,6 @@ export default function Layout(props: LayoutProps) {
         <div className={`${tema} flex flex-col h-screen w-screen`}>
             <div className={`flex flex-col w-full bg-gray-50 dark:bg-gray-600`}>
                 <MenuTopo />
-               {/*  <Cabecario
-                    titulo={props.titulo}
-                    subtitulo={props.subtitulo}
-                /> */}
                 <Conteudo>
                     {props.children}
                 </Conteudo>

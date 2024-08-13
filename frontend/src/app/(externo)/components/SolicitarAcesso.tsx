@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-import Formulario from "../form/Formulario";
-import AuthInput from "../form/Input";
-import Botao from "../form/Botao";
-import Logo from "../templete/Logo";
+import Formulario from "../../../components/form/Formulario";
+import AuthInput from "../../../components/form/Input";
+import Botao from "../../../components/form/Botao";
+import Logo from "../../shared/Logo";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import LinkInformativo from "./LinkInformativo";
 

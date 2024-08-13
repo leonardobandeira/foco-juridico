@@ -1,8 +1,8 @@
-import Formulario from "../form/Formulario";
-import Botao from "../form/Botao";
-import Banner from "../../app/shared/Banner";
-import Rodape from "../../app/shared/Marketing";
-import useAppData from "../../data/hook/useAppData";
+import Formulario from "../../../components/form/Formulario";
+import Botao from "../../../components/form/Botao";
+import Banner from "../../shared/Banner";
+import Rodape from "../../shared/Marketing";
+import useAppData from "../../../data/hook/useAppData";
 
 export default function Inicio() {
     const { setAuthPage } = useAppData();

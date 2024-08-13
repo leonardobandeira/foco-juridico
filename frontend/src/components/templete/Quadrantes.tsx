@@ -1,15 +1,14 @@
-import LinkInformativo from "../auth/LinkInformativo";
+import LinkInformativo from "../../app/(externo)/components/LinkInformativo";
 import Botao from "../form/Botao";
 
 interface QuadrantesProps {
     left: JSX.Element | null;
     right: JSX.Element | null;
     bottom: JSX.Element | null;
-    back: boolean;
 }
 
 export default function Quadrantes(props: QuadrantesProps) {
-    const { left, right, bottom, back = false } = props;
+    const { left, right, bottom } = props;
     const hasLeft = !!left;
 
     return (
