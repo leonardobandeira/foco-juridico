@@ -1,33 +1,38 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
+import { LucideIcon } from "lucide-react";
+import clsx from "clsx";
 
 interface BotaoProps {
     texto?: string;
     tipo?: 'primario' | 'secundario' | 'outline' | 'voltar';
+    icone?: LucideIcon;
     onClick: () => void;
     className?: string;
 }
 
-export default function Botao({ texto, tipo = 'primario', onClick, className }: BotaoProps) {
-    const defaultClasses = `rounded-xl font-semibold button`;
-    let tipoClasses = ''
-
-    if (tipo === 'primario') {
-        tipoClasses = 'w-full  bg-base1 hover:bg-blue-500 text-white px-4 py-3 mt-6 '
-    }
-    if (tipo === 'secundario') {
-        tipoClasses = 'w-full bg-base2 hover:bg-gray-500 text-white px-4 py-3 mt-6 '
-    }
-    if (tipo === 'outline') {
-        tipoClasses = 'w-full md:hidden hover:bg-gray-200 text-base1 px-4 py-3'
-    }
-    if (tipo === 'voltar') {
-        tipoClasses = 'text-left rounded-full'
-    }
+export default function Botao({
+    texto = '',
+    tipo = 'primario',
+    icone: Icon,
+    onClick,
+    className,
+}: BotaoProps) {
+    const tipoClasses = {
+        primario: 'bg-base1 hover:bg-blue-500 text-white mt-6',
+        secundario: 'bg-base2 hover:bg-gray-500 text-white mt-6',
+        outline: 'md:hidden hover:bg-gray-200 text-base1',
+        voltar: 'text-left rounded-full'
+    };
 
     return (
-        <button onClick={onClick} className={`${defaultClasses} ${tipoClasses} ${className}`}>
-            {tipo === 'voltar' && <FontAwesomeIcon className="md:text-5xl text-3xl text-base2" icon={faAngleLeft} />}
+        <button
+            onClick={onClick}
+            className={clsx(
+                'rounded-xl font-semibold button w-[335px] px-4 py-2 flex flex-row justify-center items-center',
+                tipoClasses[tipo],
+                className
+            )}
+        >
+            {Icon && <Icon className="mr-2 h-4 w-4 text-white" />}
             {tipo !== 'voltar' && texto}
         </button>
     );

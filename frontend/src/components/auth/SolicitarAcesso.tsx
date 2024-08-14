@@ -1,11 +1,10 @@
+import Botao from "@/components/form/Botao";
 import { useState } from "react";
-
-import Formulario from "../form/Formulario";
-import AuthInput from "../form/Input";
-import Botao from "../form/Botao";
-import Logo from "../templete/Logo";
-import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import LinkInformativo from "./LinkInformativo";
+import Input from "@/components/form/Input";
+import Formulario from "@/components/form/Formulario";
+import Logo from "@/components/Logo";
+import { Mail } from "lucide-react"
 
 export default function SolicitarAcesso() {
     const [email, setEmail] = useState('');
@@ -17,14 +16,14 @@ export default function SolicitarAcesso() {
             </div>
 
             <div className={`w-full max-w-md px-4`}>
-                <Formulario titulo="Solicitar acesso">
-                    <AuthInput
+                <Formulario >
+                    <Input
                         label="Endereço de Email"
                         tipo="email"
                         valor={email}
-                        onChange={setEmail}
-                        obrigatorio
-                        icone={faEnvelope}
+                        onChange={(e) => setEmail(e.target.value)}
+                        icone={Mail}
+                        obrigatorio={false}
                     />
 
                     <Botao
@@ -36,7 +35,7 @@ export default function SolicitarAcesso() {
                 </Formulario>
             </div>
 
-            <LinkInformativo texto="Já tenho um cadastro." texto2="Entrar" rota=""/>
+            <LinkInformativo texto="Já tenho um cadastro." texto2="Entrar" rota="" />
         </div>
     );
 }

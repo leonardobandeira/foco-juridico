@@ -1,12 +1,13 @@
 "use client";
 import { useState } from "react";
-import Formulario from "../form/Formulario";
-import AuthInput from "../form/Input";
-import Botao from "../form/Botao";
-import Logo from "../templete/Logo";
-import { faEnvelope, faLock, faPhone, faUser } from "@fortawesome/free-solid-svg-icons";
 import LinkInformativo from "./LinkInformativo";
-import useAppData from "../../data/hook/useAppData";
+import TituloFormulario from "@/components/form/TituloFormulario";
+import { User, Mail, Phone, Lock, } from "lucide-react"
+import Botao from "@/components/form/Botao";
+import Formulario from "@/components/form/Formulario";
+import Logo from "@/components/Logo";
+import useAppData from "@/data/hook/useAppData";
+import Input from "@/components/form/Input";
 
 export default function Registrar() {
     const [email, setEmail] = useState('');
@@ -20,46 +21,47 @@ export default function Registrar() {
             </div>
 
             <div className={`w-full max-w-md px-4`}>
-                <Formulario titulo="Registrar-se">
-                    <AuthInput
+                <Formulario>
+                    <TituloFormulario titulo="Registrar-se" />
+                    <Input
                         label="Nome completo"
                         tipo="email"
                         valor={email}
-                        onChange={setEmail}
+                        onChange={(e) => setEmail(e.target.value)}
                         obrigatorio
-                        icone={faUser}
+                        icone={User}
                     />
-                    <AuthInput
-                        label="Número de telefone"
-                        tipo="email"
-                        valor={email}
-                        onChange={setEmail}
-                        obrigatorio
-                        icone={faPhone}
-                    />
-                    <AuthInput
+                    <Input
                         label="Endereço de Email"
                         tipo="email"
                         valor={email}
-                        onChange={setEmail}
+                        onChange={(e) => setEmail(e.target.value)}
                         obrigatorio
-                        icone={faEnvelope}
+                        icone={Mail}
                     />
-                    <AuthInput
+                    <Input
+                        label="Número de telefone"
+                        tipo="email"
+                        valor={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        obrigatorio
+                        icone={Phone}
+                    />
+                    <Input
                         label="Senha"
                         tipo="password"
                         valor={senha}
-                        onChange={setSenha}
+                        onChange={(e) => setSenha(e.target.value)}
                         obrigatorio
-                        icone={faLock}
+                        icone={Lock}
                     />
-                    <AuthInput
+                    <Input
                         label="Confirme a senha"
                         tipo="password"
                         valor={senha}
-                        onChange={setSenha}
+                        onChange={(e) => setSenha(e.target.value)}
                         obrigatorio
-                        icone={faLock}
+                        icone={Lock}
                     />
                     <Botao
                         texto="Registrar-se"
@@ -67,11 +69,6 @@ export default function Registrar() {
                         tipo="primario"
                         onClick={() => { console.log('Teste de entrar na app via cadastro'); }}
                     />
-                    {/* <Botao
-                        texto="Voltar"
-                        tipo="outline"
-                        onClick={() => { setAuthPage('login'); }}
-                    /> */}
                 </Formulario>
             </div>
 

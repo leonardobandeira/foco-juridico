@@ -20,7 +20,7 @@ export default function Select(props: AuthInputProps) {
                     {/* {props.icone && (
                         <FontAwesomeIcon 
                             icon={props.icone} 
-                            className="text-xl" 
+                            className="text-xl"  // Utilizando classe utilitária do Tailwind CSS
                         />
                     )} */}
 

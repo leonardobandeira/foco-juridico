@@ -1,18 +1,16 @@
-import Botao from "./Botao";
+import { ReactNode } from "react";
 
-export default function Formulario(props:any) {
+interface FormularioProps {
+    className?: string;
+    children: ReactNode;
+}
+
+export default function Formulario({ className, children }: FormularioProps) {
     return (
-        <form className={`my-6`}>
-            <h1 className={`flex items-center font-bold text-2xl text-base1 md:text-3xl tracking-wider`}>
-                <Botao
-                    tipo="voltar"
-                    className={`${props.back || false ? 'block' : 'hidden'} mr-3`}
-                    onClick={() => { console.log('Teste'); }}
-                />
-                <span>{props.titulo}</span>
-            </h1>
-
-            {props.children}
-        </form>
-    )
+        <form className="my-6">
+            <div className={`${className}`}>
+                {children}
+            </div>
+        </form >
+    );
 }
