@@ -14,13 +14,16 @@ export default function MenuTopo(props: MenuTopoProps) {
                 <span className={`flex items-center text-black font-semibold justify-center p-1.5 text-lg bg-gray-50 border-b border-base2`}>
                     <Settings className="mr-2 h-5 w-5" />Minha Conta
                 </span>
-                <ItemMenu path="admin/alerta">
+                <ItemMenu path="alerta">
                     <AlertCircle className="mr-2 h-4 w-4" />Criar Alerta
                 </ItemMenu>
-                <ItemMenu path="admin/meus-dados">
+                <ItemMenu path="gerenciar-paineis">
+                    <AlertCircle className="mr-2 h-4 w-4" />Gerenciar Paíneis
+                </ItemMenu>
+                <ItemMenu path="meus-dados">
                     <User className="mr-2 h-4 w-4" />Meus dados
                 </ItemMenu>
-                <ItemMenu path="admin/sobre">
+                <ItemMenu path="sobre">
                     <Copyright className="mr-2 h-4 w-4" />Sobre nós
                 </ItemMenu>
                 <ItemMenu path="/" style="text-red-500">

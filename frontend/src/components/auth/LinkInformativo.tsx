@@ -1,4 +1,4 @@
-import { Auth } from "@/context/types";
+import { Auth } from "@/data/context/types";
 import useAppData from "@/data/hook/useAppData";
 
 interface LinkInformativo {

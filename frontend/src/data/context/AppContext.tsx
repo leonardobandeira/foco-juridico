@@ -1,7 +1,7 @@
 "use client"; 
 
 import { createContext, ReactNode, useState } from "react";
-import { Auth, Tema } from "./types";
+import { Auth, Tema } from "../types";
 
 interface AppContextProps {
     tema: Tema;
