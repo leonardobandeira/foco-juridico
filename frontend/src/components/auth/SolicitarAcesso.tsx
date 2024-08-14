@@ -21,7 +21,7 @@ export default function SolicitarAcesso() {
                         label="Endereço de Email"
                         tipo="email"
                         valor={email}
-                        onChange={setEmail}
+                        onChange={(e) => setEmail(e.target.value)}
                         icone={Mail}
                         obrigatorio={false}
                     />

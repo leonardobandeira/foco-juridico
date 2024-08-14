@@ -1,16 +1,16 @@
 import { LucideIcon } from "lucide-react"
 
-interface AuthInputProps {
+interface InputProps {
     label: string
-    valor: any
+    valor: string
     tipo: 'text' | 'email' | 'password' | 'number'
     obrigatorio: boolean
-    onChange: (novoValor: any) => void
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
     icone: LucideIcon
     className?: string
 }
 
-export default function Input(props: AuthInputProps) {
+export default function Input(props: InputProps) {
     const { label, valor, tipo, obrigatorio, onChange, icone: Icon, className } = props;
 
     return (
@@ -23,7 +23,7 @@ export default function Input(props: AuthInputProps) {
                         className={`flex-grow py-2 bg-transparent focus:bg-gray-50 text-black ${className}`}
                         type={tipo ?? 'text'}
                         value={valor}
-                        onChange={e => onChange?.(e.target.value)}
+                        onChange={onChange}
                         required={obrigatorio}
                     />
                 </div>

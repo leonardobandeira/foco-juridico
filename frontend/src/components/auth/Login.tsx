@@ -30,7 +30,7 @@ export default function Login() {
                         label="Endereço de Email"
                         tipo="email"
                         valor={email}
-                        onChange={setEmail}
+                        onChange={(e) => setEmail(e.target.value)}
                         icone={Mail}
                         obrigatorio={false}
                     />
@@ -38,7 +38,7 @@ export default function Login() {
                         label="Senha"
                         tipo="password"
                         valor={senha}
-                        onChange={setSenha}
+                        onChange={(e) => setSenha(e.target.value)}
                         icone={Lock}
                         obrigatorio={false}
                     />

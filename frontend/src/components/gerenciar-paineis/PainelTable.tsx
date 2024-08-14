@@ -3,6 +3,7 @@ import PainelRow from './PainelRow';
 import PainelModal from './PainelModal';
 import { getPaineis, updatePainel, createPainel, deletePainel } from '@/services/painelService';
 import { Painel } from '@/data/context/types';
+import TituloFormulario from '../form/TituloFormulario';
 
 type PainelTableProps = {
     paineis: Painel[];
@@ -21,7 +22,7 @@ export default function PainelTable({ paineis: initialPaineis }: PainelTableProp
                     nome: painel.nome,
                     endereco: painel.endereco,
                     grupoId: painel.grupoId,
-                    indicadores: painel.indicadores.map((indicador: any) => indicador.nome) // Transformar Indicador para string
+                    indicadores: painel.indicadores.map((indicador: any) => indicador.nome)
                 }));
                 setPaineis(transformedData);
             } catch (error) {
@@ -29,7 +30,6 @@ export default function PainelTable({ paineis: initialPaineis }: PainelTableProp
             }
         };
 
-        // Fetch data only if initialPaineis is empty
         if (initialPaineis.length === 0) {
             fetchPaineis();
         }
@@ -69,6 +69,7 @@ export default function PainelTable({ paineis: initialPaineis }: PainelTableProp
 
     return (
         <div className="container mx-auto p-4">
+            <TituloFormulario titulo="Gerenciar Painéis" />
             <table className="min-w-full bg-white border border-gray-300">
                 <thead>
                     <tr>

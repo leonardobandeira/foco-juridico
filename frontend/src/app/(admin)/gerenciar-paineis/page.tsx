@@ -1,29 +1,33 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import PainelTable from "@/components/gerenciar-paineis/PainelTable";
 import { Painel } from "@/data/context/types";
+import { getPaineis } from "@/services/painelService";
 
-export default function gerenciarPaineis() {
-  const paineis: Painel[] = [
-    {
-      id: 1,
-      nome: 'Painel 1',
-      endereco: 'Endereço 1',
-      grupoId: 1,
-      indicadores: [
-        { id: 1, nome: 'Indicador 1' },
-      ],
-    },
-    {
-      id: 2,
-      nome: 'Painel 2',
-      endereco: 'Endereço 2',
-      grupoId: 2,
-      indicadores: [
-        { id: 2, nome: 'Indicador 2' },
-      ],
-    },
-  ];
+export default function GerenciarPaineis() {
+  const [paineis, setPaineis] = useState<Painel[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchPaineis() {
+      try {
+        const data = await getPaineis();
+        setPaineis(data);
+      } catch (err) {
+        console.error(err);
+        setError('Erro ao carregar os painéis');
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchPaineis();
+  }, []);
+
+  if (loading) return <p>Carregando...</p>;
+  if (error) return <p>{error}</p>;
 
   return <PainelTable paineis={paineis} />;
-};
+}

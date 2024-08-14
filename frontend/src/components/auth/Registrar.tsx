@@ -27,7 +27,7 @@ export default function Registrar() {
                         label="Nome completo"
                         tipo="email"
                         valor={email}
-                        onChange={setEmail}
+                        onChange={(e) => setEmail(e.target.value)}
                         obrigatorio
                         icone={User}
                     />
@@ -35,7 +35,7 @@ export default function Registrar() {
                         label="Endereço de Email"
                         tipo="email"
                         valor={email}
-                        onChange={setEmail}
+                        onChange={(e) => setEmail(e.target.value)}
                         obrigatorio
                         icone={Mail}
                     />
@@ -43,7 +43,7 @@ export default function Registrar() {
                         label="Número de telefone"
                         tipo="email"
                         valor={email}
-                        onChange={setEmail}
+                        onChange={(e) => setEmail(e.target.value)}
                         obrigatorio
                         icone={Phone}
                     />
@@ -51,7 +51,7 @@ export default function Registrar() {
                         label="Senha"
                         tipo="password"
                         valor={senha}
-                        onChange={setSenha}
+                        onChange={(e) => setSenha(e.target.value)}
                         obrigatorio
                         icone={Lock}
                     />
@@ -59,7 +59,7 @@ export default function Registrar() {
                         label="Confirme a senha"
                         tipo="password"
                         valor={senha}
-                        onChange={setSenha}
+                        onChange={(e) => setSenha(e.target.value)}
                         obrigatorio
                         icone={Lock}
                     />

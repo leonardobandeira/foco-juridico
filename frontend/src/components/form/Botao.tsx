@@ -27,12 +27,12 @@ export default function Botao({
         <button
             onClick={onClick}
             className={clsx(
-                'rounded-xl font-semibold button w-[335px] px-4 py-2',
+                'rounded-xl font-semibold button w-[335px] px-4 py-2 flex flex-row justify-center items-center',
                 tipoClasses[tipo],
                 className
             )}
         >
-            {Icon && <Icon className="mr-2 h-4 w-4 text-gray-500" />}
+            {Icon && <Icon className="mr-2 h-4 w-4 text-white" />}
             {tipo !== 'voltar' && texto}
         </button>
     );

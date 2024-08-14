@@ -6,12 +6,14 @@ type PainelRowProps = {
 };
 
 export default function PainelRow({ painel, onEditClick }: PainelRowProps) {
+    const indicadores = painel.indicadores ?? []; // Define um valor padrão se for undefined
+
     return (
         <tr className="text-center">
             <td className="py-2 px-4 border-b">{painel.nome}</td>
             <td className="py-2 px-4 border-b">
-                {painel.indicadores.length > 0
-                    ? painel.indicadores.map((indicador) => indicador.nome).join(', ')
+                {indicadores.length > 0
+                    ? indicadores.map((indicador) => indicador.nome).join(', ')
                     : 'Sem Indicadores'}
             </td>
             <td className="py-2 px-4 border-b">

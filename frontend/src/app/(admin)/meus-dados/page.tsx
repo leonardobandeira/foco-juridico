@@ -29,7 +29,7 @@ export default function MeusDados() {
                         label="Nome completo"
                         tipo="text"
                         valor={nome}
-                        onChange={setNome}
+                        onChange={(e) => setNome(e.target.value)}
                         obrigatorio
                         icone={User}
                     />
@@ -37,7 +37,7 @@ export default function MeusDados() {
                         label="Endereço de email"
                         tipo="text"
                         valor={email}
-                        onChange={setEmail}
+                        onChange={(e) => setEmail(e.target.value)}
                         obrigatorio
                         icone={Mail}
                     />
@@ -45,7 +45,7 @@ export default function MeusDados() {
                         label="Número de telefone"
                         tipo="text"
                         valor={telefone}
-                        onChange={setTelefone}
+                        onChange={(e) => setTelefone(e.target.value)}
                         obrigatorio
                         icone={Phone}
                     />
