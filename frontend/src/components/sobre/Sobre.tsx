@@ -1,6 +1,5 @@
-import Botao from "../../components/form/Botao";
 import Logo from "../../components/Logo";
-import Rodape from "../../components/Marketing";
+import Marketing from "../../components/Marketing";
 import { IconeEmail, IconeGithub, IconeLinkedin } from "../../components/icons";
 
 export default function Sobre() {
@@ -35,7 +34,7 @@ export default function Sobre() {
                 </p>
 
             </div>
-            <Rodape />
+            <Marketing />
         </div>
     );
 }
