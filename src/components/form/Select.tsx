@@ -1,33 +1,29 @@
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { ReactNode } from "react"
+import { LucideIcon } from "lucide-react";
+import { ReactNode } from "react";
 
-interface AuthInputProps {
-    label: string
-    valor: any
-    obrigatorio?: boolean
-    onChange?: (novoValor: any) => void
-    children: ReactNode
+interface SelectProps {
+    label: string;
+    valor: any;
+    obrigatorio?: boolean;
+    icone?: LucideIcon;
+    onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+    children: ReactNode;
 }
 
-export default function Select(props: AuthInputProps) {
+export default function Select(props: SelectProps) {
+    const { icone: Icon } = props;
+
     return (
         <div className="flex flex-col mt-4">
             <label className="text-gray-400 font-normal tracking-wider">
                 <span>{props.label}</span>
 
                 <div className="flex flex-row items-center gap-4 border-b-2 border-gray-100">
-                    {/* {props.icone && (
-                        <FontAwesomeIcon 
-                            icon={props.icone} 
-                            className="text-xl"  // Utilizando classe utilitária do Tailwind CSS
-                        />
-                    )} */}
-
+                    {Icon && <Icon className="mr-2 h-4 w-4 text-gray-500" />}
                     <select
                         className="flex-grow py-2 text-black bg-transparent focus:bg-gray-50"
                         value={props.valor}
-                        onChange={e => props.onChange?.(e.target.value)}
+                        onChange={e => props.onChange(e)}
                         required={props.obrigatorio}
                     >
                         {props.children}
@@ -35,5 +31,5 @@ export default function Select(props: AuthInputProps) {
                 </div>
             </label>
         </div>
-    )
+    );
 }

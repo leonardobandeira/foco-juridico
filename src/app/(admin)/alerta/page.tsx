@@ -11,8 +11,13 @@ import Select from "@/components/form/Select";
 import TituloFormulario from "@/components/form/TituloFormulario";
 import { Indicador, Painel } from "@/data/context/types";
 import { getIndicadoresDoPainel, getPaineis } from "@/services/painelService";
-import { Mail } from "lucide-react";
+import { ChartLine, Siren, TextSearch } from "lucide-react";
 import { useEffect, useState } from "react";
+
+interface ItemOption {
+    nome: string;
+    id: number;
+}
 
 export default function Alerta() {
     const [nome, setNome] = useState('');
@@ -25,7 +30,7 @@ export default function Alerta() {
     const handleProximoClick = () => setProximo(true);
     const handleFinalizarClick = () => setProximo(false);
 
-    const [paineis, setPaineis] = useState([]);
+    const [paineis, setPaineis] = useState<ItemOption[]>([]);
     const [indicadores, setIndicadores] = useState<Indicador[]>([]);
 
     useEffect(() => {
@@ -39,6 +44,7 @@ export default function Alerta() {
                     }));
 
                     setPaineis(transformedData);
+                    console.log("Mudou o painel");
                 } else {
                     console.error('Dados retornados não são um array:', data);
                 }
@@ -47,28 +53,31 @@ export default function Alerta() {
             }
         };
         fetchPaineis();
+        console.log(paineis);
     }, []);
 
     useEffect(() => {
         const fetchIndicadores = async () => {
-            try {
-                const data = await getIndicadoresDoPainel(+painel);
-                if (data) {
-                    const transformedData = data.map((indicador: any) => ({
-                        id: indicador.id,
-                        nome: indicador.nome,
-                    }));
+            if (painel) { // Adicionar uma verificação para painel
+                try {
+                    const data = await getIndicadoresDoPainel(+painel);
+                    if (data) {
+                        const transformedData = data.map((indicador: any) => ({
+                            id: indicador.id,
+                            nome: indicador.nome,
+                        }));
 
-                    setIndicadores(transformedData);
-                } else {
-                    console.error('Dados retornados não são um array:', data);
+                        setIndicadores(transformedData);
+                    } else {
+                        console.error('Dados retornados não são um array:', data);
+                    }
+                } catch (error) {
+                    console.error('Erro ao buscar indicadores:', error);
                 }
-            } catch (error) {
-                console.error('Erro ao buscar indicadores:', error);
             }
         };
         fetchIndicadores();
-    }, [painel])
+    }, [painel]); // Adicionar painel como dependência
 
     const fazerAlerta = () => {
         const alerta = {
@@ -76,17 +85,17 @@ export default function Alerta() {
             painel,
             indicador,
             frequencia,
-            meta
-        }
+            meta,
+        };
 
-        console.log(alerta)
-    }
+        console.log(alerta);
+    };
 
     return (
         <div className="container mx-auto p-4 flex justify-center items-center">
             <div className="flex flex-col w-full max-w-md">
-                <TituloFormulario titulo="Criar alerta" className="pb-3" />
-                <div className="w-full px-4">
+                <TituloFormulario titulo="Criar alerta" className="pb-1" />
+                <div className="w-full ">
                     {!proximo ? (
                         <Formulario>
                             <Input
@@ -95,18 +104,30 @@ export default function Alerta() {
                                 valor={nome}
                                 onChange={(e) => setNome(e.target.value)}
                                 obrigatorio
-                                icone={Mail}
+                                icone={Siren}
                             />
-                            <Select label="Painel monitorado" valor={painel} onChange={setPainel}>
-                                {paineis.map((item, index) => (
+                            <Select
+                                label="Painel monitorado"
+                                valor={painel}
+                                onChange={(e) => setPainel(e.target.value)}
+                                icone={ChartLine}
+                            >
+                                <option value="" disabled selected>Selecione...</option>
+                                {paineis.map((item: ItemOption, index) => (
                                     <option key={index} value={item.id} className="p-4">
                                         {item.nome}
                                     </option>
                                 ))}
                             </Select>
 
-                            <Select label="Indicador monitorado" valor={indicador} onChange={setIndicador}>
-                                {indicadores.map((item, index) => (
+                            <Select
+                                label="Indicador monitorado"
+                                valor={indicador}
+                                onChange={(e) => setIndicador(e.target.value)}
+                                icone={TextSearch}
+                            >
+                                <option value="" disabled selected>Selecione...</option>
+                                {indicadores.map((item: ItemOption, index) => (
                                     <option key={index} value={item.id} className="p-4">
                                         {item.nome}
                                     </option>
@@ -122,7 +143,7 @@ export default function Alerta() {
                     ) : (
                         <Formulario>
                             <RangerFrequencia frequencia={frequencia} onChange={setFrequencia} />
-                            <RangeAtingir />
+                            <RangeAtingir meta={meta} onChange={setMeta} />
                             <Botao
                                 texto="Finalizar"
                                 className="mt-8 w-full"
