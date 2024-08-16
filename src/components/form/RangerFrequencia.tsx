@@ -1,12 +1,12 @@
 import { AlarmClock } from "lucide-react";
 import React, { useState, useEffect } from "react";
 
-interface AuthInputProps {
+interface RangerFrequenciaProps {
     frequencia: number;
-    onChange?: (novoValor: number) => void;
+    onChangeFrequencia: (novoValor: number) => void;
 }
 
-export default function RangerFrequencia(props: AuthInputProps) {
+export default function RangerFrequencia(props: RangerFrequenciaProps) {
     const [dias, setDias] = useState<number>(15);
     const [vezesAoMes, setVezesAoMes] = useState<number>(2);
     const [horas, setHoras] = useState<number>(360);
@@ -17,7 +17,6 @@ export default function RangerFrequencia(props: AuthInputProps) {
     const atualizaFrequencia = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const novoValor = Number(event.target.value);
         setDias(novoValor);
-
     };
 
     const atualizaViaHoras = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,6 +32,8 @@ export default function RangerFrequencia(props: AuthInputProps) {
         setHoras(horasCalculadas);
         setResto(restoCalculado);
         setVezesAoMes(Math.trunc(30 / dias))
+
+        props.onChangeFrequencia(dias)
     }, [dias]);
 
     const exibirMeio = resto > 0;

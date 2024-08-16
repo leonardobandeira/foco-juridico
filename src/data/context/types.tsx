@@ -1,6 +1,20 @@
 export type Auth = '' | 'login' | 'registrar' | 'solicitar';
 export type Tema = 'dark' | '';
 
+export interface ItemOption {
+  nome: string;
+  id: number;
+}
+
+export interface Alerta {
+  usuarioId: number
+  nome: string
+  frequencia: number // quantidade de dias
+  indicadorId: number
+  tipoMetaId: number // <, >, =, <= ...
+  valor: number // valor numerico
+}
+
 export interface Painel {
   id: number;
   nome: string;
@@ -19,12 +33,12 @@ export interface Painel {
 }
 
 export type Indicador = {
-    id: number;
-    nome: string;
+  id: number;
+  nome: string;
 };
 
 export type TipoMeta = {
-    id: number;
-    nome: string;
-    simbolo: string; 
+  id: number;
+  nome: string;
+  simbolo: string;
 };

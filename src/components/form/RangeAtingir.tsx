@@ -3,7 +3,10 @@ import { TipoMeta } from '@/data/context/types';
 import { getMetas } from "@/services/indicadorService";
 import { Target } from "lucide-react";
 
-interface AuthInputProps { }
+interface RangeAtingirProps {
+    onChangeMeta: (valor: number) => void;
+    onChangeCondicao: (condicao: number) => void;
+}
 
 function getTextoMag(mag: number): string {
     if ([2, 3, 5].includes(mag)) return 'a';
@@ -12,7 +15,7 @@ function getTextoMag(mag: number): string {
     return '';
 }
 
-export default function RangeAtingir(props: AuthInputProps) {
+export default function RangeAtingir({ onChangeMeta, onChangeCondicao }: RangeAtingirProps) {
     const [mag, setMag] = useState<number>(1);
     const [valor, setValor] = useState<number>(1);
     const [metas, setMetas] = useState<TipoMeta[]>([]);
@@ -29,6 +32,11 @@ export default function RangeAtingir(props: AuthInputProps) {
 
         fetchMetas();
     }, []);
+
+    useEffect(() => {
+        onChangeMeta(valor)
+        onChangeCondicao(mag)
+    }, [valor, mag])
 
     const atualizaMag = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setMag(+event.target.value);

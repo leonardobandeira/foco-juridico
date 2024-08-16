@@ -9,29 +9,25 @@ import RangeAtingir from "@/components/form/RangeAtingir";
 import RangerFrequencia from "@/components/form/RangerFrequencia";
 import Select from "@/components/form/Select";
 import TituloFormulario from "@/components/form/TituloFormulario";
-import { Indicador, Painel } from "@/data/context/types";
+import { ItemOption } from "@/data/context/types";
+import { creatAlerta } from "@/services/alertaService";
 import { getIndicadoresDoPainel, getPaineis } from "@/services/painelService";
 import { ArrowBigRight, ChartLine, Siren, TextSearch, ThumbsUp } from "lucide-react";
 import { useEffect, useState } from "react";
 
-interface ItemOption {
-    nome: string;
-    id: number;
-}
+
 
 export default function Alerta() {
     const [nome, setNome] = useState('');
-    const [painel, setPainel] = useState('');
-    const [indicador, setIndicador] = useState('');
-    const [frequencia, setFrequencia] = useState(1);
-    const [meta, setMeta] = useState(1);
+    const [painel, setPainel] = useState<number | null>(null);
+    const [indicadorId, setIndicadorId] = useState<number | null>(null);
+    const [frequencia, setFrequencia] = useState(0);
+    const [valor, setValor] = useState(1);
+    const [tipoMetaId, setTipoMetaId] = useState(1);
     const [proximo, setProximo] = useState(false);
 
-    const handleProximoClick = () => setProximo(true);
-    const handleFinalizarClick = () => setProximo(false);
-
     const [paineis, setPaineis] = useState<ItemOption[]>([]);
-    const [indicadores, setIndicadores] = useState<Indicador[]>([]);
+    const [indicadores, setIndicadores] = useState<ItemOption[]>([]);
 
     useEffect(() => {
         const fetchPaineis = async () => {
@@ -44,7 +40,6 @@ export default function Alerta() {
                     }));
 
                     setPaineis(transformedData);
-                    console.log("Mudou o painel");
                 } else {
                     console.error('Dados retornados não são um array:', data);
                 }
@@ -53,12 +48,11 @@ export default function Alerta() {
             }
         };
         fetchPaineis();
-        console.log(paineis);
     }, []);
 
     useEffect(() => {
         const fetchIndicadores = async () => {
-            if (painel) { 
+            if (painel) {
                 try {
                     const data = await getIndicadoresDoPainel(+painel);
                     if (data) {
@@ -77,17 +71,25 @@ export default function Alerta() {
             }
         };
         fetchIndicadores();
-    }, [painel]); 
+    }, [painel]);
 
-   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleProximoClick = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log('submetido', {
+        setProximo(true)
+    };
+
+    const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const alerta = {
+            "usuarioId": 2,
             nome,
-            painel,
-            indicador,
             frequencia,
-            meta,
-        });
+            indicadorId,
+            tipoMetaId,
+            valor
+        }
+
+        creatAlerta(alerta);
     };
 
     return (
@@ -96,7 +98,7 @@ export default function Alerta() {
                 <TituloFormulario titulo="Criar alerta" className="pb-1" />
                 <div className="w-full ">
                     {!proximo ? (
-                        <Formulario>
+                        <Formulario onSubmit={handleProximoClick}>
                             <Input
                                 label="Nome do alerta"
                                 tipo="text"
@@ -108,8 +110,9 @@ export default function Alerta() {
                             <Select
                                 label="Painel monitorado"
                                 valor={painel}
-                                onChange={(e) => setPainel(e.target.value)}
+                                onChange={(e) => setPainel(+e.target.value)}
                                 icone={ChartLine}
+                                obrigatorio
                             >
                                 <option value="" disabled selected>Selecione...</option>
                                 {paineis.map((item: ItemOption, index) => (
@@ -121,9 +124,10 @@ export default function Alerta() {
 
                             <Select
                                 label="Indicador monitorado"
-                                valor={indicador}
-                                onChange={(e) => setIndicador(e.target.value)}
+                                valor={indicadorId}
+                                onChange={(e) => setIndicadorId(+e.target.value)}
                                 icone={TextSearch}
+                                obrigatorio
                             >
                                 <option value="" disabled selected>Selecione...</option>
                                 {indicadores.map((item: ItemOption, index) => (
@@ -136,14 +140,13 @@ export default function Alerta() {
                                 texto="Próximo"
                                 className="mt-8 w-full"
                                 tipo="primario"
-                                onClick={handleProximoClick}
                                 icone={ArrowBigRight}
                             />
                         </Formulario>
                     ) : (
                         <Formulario onSubmit={handleFormSubmit}>
-                            <RangerFrequencia frequencia={frequencia} onChange={setFrequencia} />
-                            <RangeAtingir meta={meta} onChange={setMeta} />
+                            <RangerFrequencia frequencia={frequencia} onChangeFrequencia={setFrequencia} />
+                            <RangeAtingir onChangeMeta={setValor} onChangeCondicao={setTipoMetaId} />
                             <Botao
                                 texto="Criar alerta"
                                 className="mt-8 w-full"

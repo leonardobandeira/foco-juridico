@@ -1,3 +1,4 @@
+import { Alerta } from "@/data/context/types";
 import api from "./api";
 
 export const getAlertas = async () => {
@@ -10,12 +11,12 @@ export const getAlertas = async () => {
   }
 };
 
-export const creatAlerta = async (painel: Painel) => {
+export const creatAlerta = async (alerta: Alerta) => {
   try {
-    const response = await api.post<Painel>('/alerta', painel);
+    const response = await api.post<Alerta>('/alerta', alerta);
     return response.data;
   } catch (error) {
-    console.error('Erro ao criar painel:', error);
+    console.error('Erro ao criar alerta:', error);
     throw error;
   }
 };
