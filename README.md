@@ -1,34 +1,36 @@
-# Plataforma de Alertas Ativos para Painéis de Monitoramento do TRF5
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Visão Geral
+## Getting Started
 
-Este projeto visa desenvolver uma plataforma de alertas ativos para os painéis de monitoramento do Tribunal Regional Federal da 5.ª Região (TRF5). A plataforma simplificará o monitoramento dos painéis de BI, permitindo a criação e gerenciamento de alertas, extração de dados e envio de notificações instantâneas para dispositivos móveis e e-mails.
+First, run the development server:
 
-## Objetivo
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-O objetivo geral é desenvolver uma plataforma que automatize o monitoramento dos painéis do TRF5, enviando alertas relevantes para os profissionais do judiciário, independentemente de sua experiência prévia.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Funcionalidades Principais
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-- **Criação e Gerenciamento de Alertas:** Permitir que os usuários configurem alertas baseados em filtros relevantes.
-- **Extração de Dados:** Implementar um mecanismo eficiente para extrair dados dos painéis de BI do TRF5.
-- **Notificações Instantâneas:** Enviar alertas para dispositivos móveis e e-mails.
-- **Registros de Periodicidade:** Registrar e gerenciar a periodicidade dos alertas.
-- **Filtros de Limites:** Permitir a configuração de limites para os alertas.
-- **Integração com Plataformas Populares:** Integrar a plataforma com sistemas de comunicação internos.
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Tecnologias Utilizadas
+## Learn More
 
-- **Frontend:** Next.js
-- **Backend:** Python com BeautifulSoup para scripts de extração de dados
-- **Banco de Dados:** Firebase
+To learn more about Next.js, take a look at the following resources:
 
-## Instalação
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-### Frontend
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Contato
-#### Para mais informações, entre em contato:
+## Deploy on Vercel
 
-###### Nome: **Leonardo Bandeira de Lucena**
-###### E-mail: [lucena.lbd@gmail.com](lucena.lbd@gmail.com)
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
