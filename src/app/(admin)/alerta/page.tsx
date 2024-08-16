@@ -11,7 +11,7 @@ import Select from "@/components/form/Select";
 import TituloFormulario from "@/components/form/TituloFormulario";
 import { Indicador, Painel } from "@/data/context/types";
 import { getIndicadoresDoPainel, getPaineis } from "@/services/painelService";
-import { ChartLine, Siren, TextSearch } from "lucide-react";
+import { ArrowBigRight, ChartLine, Siren, TextSearch, ThumbsUp } from "lucide-react";
 import { useEffect, useState } from "react";
 
 interface ItemOption {
@@ -58,7 +58,7 @@ export default function Alerta() {
 
     useEffect(() => {
         const fetchIndicadores = async () => {
-            if (painel) { // Adicionar uma verificação para painel
+            if (painel) { 
                 try {
                     const data = await getIndicadoresDoPainel(+painel);
                     if (data) {
@@ -77,18 +77,17 @@ export default function Alerta() {
             }
         };
         fetchIndicadores();
-    }, [painel]); // Adicionar painel como dependência
+    }, [painel]); 
 
-    const fazerAlerta = () => {
-        const alerta = {
+   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        console.log('submetido', {
             nome,
             painel,
             indicador,
             frequencia,
             meta,
-        };
-
-        console.log(alerta);
+        });
     };
 
     return (
@@ -138,17 +137,18 @@ export default function Alerta() {
                                 className="mt-8 w-full"
                                 tipo="primario"
                                 onClick={handleProximoClick}
+                                icone={ArrowBigRight}
                             />
                         </Formulario>
                     ) : (
-                        <Formulario>
+                        <Formulario onSubmit={handleFormSubmit}>
                             <RangerFrequencia frequencia={frequencia} onChange={setFrequencia} />
                             <RangeAtingir meta={meta} onChange={setMeta} />
                             <Botao
-                                texto="Finalizar"
+                                texto="Criar alerta"
                                 className="mt-8 w-full"
                                 tipo="primario"
-                                onClick={fazerAlerta}
+                                icone={ThumbsUp}
                             />
                         </Formulario>
                     )}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { TipoMeta } from '@/data/context/types';
 import { getMetas } from "@/services/indicadorService";
+import { Target } from "lucide-react";
 
 interface AuthInputProps { }
 
@@ -13,26 +14,23 @@ function getTextoMag(mag: number): string {
 
 export default function RangeAtingir(props: AuthInputProps) {
     const [mag, setMag] = useState<number>(1);
-    const [valor, setValor] = useState<number>(45666);
+    const [valor, setValor] = useState<number>(1);
     const [metas, setMetas] = useState<TipoMeta[]>([]);
 
     useEffect(() => {
         const fetchMetas = async () => {
             try {
                 const data = await getMetas();
-                setMetas(data)
+                setMetas(data);
             } catch (error) {
                 console.error('Erro ao buscar metas:', error);
             }
         };
 
-        if (metas.length === 0) {
-            fetchMetas();
-        }
-    }, [metas.length]);
+        fetchMetas();
+    }, []);
 
     const atualizaMag = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        console.log(event.target.value)
         setMag(+event.target.value);
     };
 
@@ -49,38 +47,43 @@ export default function RangeAtingir(props: AuthInputProps) {
     return (
         <div className="flex flex-col mt-6">
             <label className="text-gray-400 font-normal tracking-wider">
-                <span className="text-md text-black font-bold">
+                <span className="text-md text-black font-bold flex items-center">
+                    <Target className="mr-2 h-4 w-4 text-black" />
                     Alertar quando o valor
                 </span>
-                <div className="flex flex-row items-center gap-4 border-b-2 border-gray-100">
-                    <div className="bg-gray-100 mt-4 h-auto flex flex-col items-center gap-2 justify-center p-6 rounded-3xl flex-grow">
-                        <div className="flex flex-row gap-4 items-center text-bold text-black text-md">
-                            <span>For</span>
-                            <span className="text-base1 font-bold text-lg">
-                                <select
-                                    value={mag}
-                                    onChange={atualizaMag}
-                                    className="text-md text-center p-1"
-                                >
-                                    {metas.map((item, index) => (
-                                        <option key={index} value={item.id} className="p-4">
-                                            {item.nome}
-                                        </option>
-                                    ))}
-                                </select>
-                            </span>
-                            <span>{getTextoMag(mag)}</span>
-                            <input
-                                className="w-24 text-center p-1"
-                                type="number"
-                                value={valor}
-                                onChange={handlerValor}
-                                min="0"
-                                max="50000"
-                            />
+                <div className="border-b-2 border-gray-100 mt-4">
+                    <div className="bg-gray-100 p-6 rounded-3xl flex flex-col gap-4 items-center">
+                        <div className="flex flex-col gap-4 md:flex-row md:gap-6 items-center text-black text-md">
+                            <div className="flex items-center gap-4">
+                                <span>For</span>
+                                <span className="font-bold text-lg">
+                                    <select
+                                        value={mag}
+                                        onChange={atualizaMag}
+                                        className="text-md text-center p-1"
+                                    >
+                                        {metas.map((item, index) => (
+                                            <option key={index} value={item.id}>
+                                                {item.nome}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </span>
+                            </div>
+                            <div className="flex items-center gap-4">
+                                <span>{getTextoMag(mag)}</span>
+                                <input
+                                    className="w-24 text-center p-1"
+                                    type="number"
+                                    value={valor}
+                                    onChange={handlerValor}
+                                    min="0"
+                                    max="50000"
+                                />
+                            </div>
                         </div>
                         <input
-                            className="w-[100%] self-center py-2 bg-transparent focus:bg-gray-50 text-black cursor-pointer"
+                            className="w-full max-w-xs py-2 bg-transparent focus:bg-gray-50 text-black cursor-pointer"
                             type="range"
                             min="0"
                             max="50000"

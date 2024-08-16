@@ -5,7 +5,7 @@ interface BotaoProps {
     texto?: string;
     tipo?: 'primario' | 'secundario' | 'outline' | 'voltar';
     icone?: LucideIcon;
-    onClick: () => void;
+    onClick?: () => void;
     className?: string;
 }
 
@@ -32,8 +32,8 @@ export default function Botao({
                 className
             )}
         >
-            {Icon && <Icon className="mr-2 h-4 w-4 text-white" />}
             {tipo !== 'voltar' && texto}
+            {Icon && <Icon className="ml-2 h-4 w-4 text-white" />}
         </button>
     );
 }
