@@ -1,12 +1,19 @@
+import { removeCookie } from "@/actions/cookies";
 import Logo from "../../../components/Logo";
 import CartaoPessoal from "./CartaoPessoal";
 import ItemMenu from "./ItemMenu";
 import { AlertCircle, User, Copyright, LogOut, Settings } from "lucide-react"
+import { signOutWithGoogle } from "@/lib/firebase/auth";
 
 interface MenuTopoProps {
 
 }
 export default function MenuTopo(props: MenuTopoProps) {
+    const handleSignOut = async () => {
+        await signOutWithGoogle();
+        await removeCookie();
+    };
+
     return (
         <div className={`w-full flex flex-row justify-between items-center mb-4 bg-gray-100 p-4`}>
             <Logo classes={`w-[120px]`} />
@@ -26,9 +33,11 @@ export default function MenuTopo(props: MenuTopoProps) {
                 <ItemMenu path="sobre">
                     <Copyright className="mr-2 h-4 w-4" />Sobre nós
                 </ItemMenu>
-                <ItemMenu path="/" style="text-red-500">
-                    <LogOut className="mr-2 h-4 w-4" />Sair
-                </ItemMenu>
+                <a onClick={handleSignOut}>
+                    <ItemMenu path="/" style="text-red-500">
+                        <LogOut className="mr-2 h-4 w-4" />
+                        Sair
+                    </ItemMenu></a>
             </CartaoPessoal>
         </div>
     )

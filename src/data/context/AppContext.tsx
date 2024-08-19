@@ -1,16 +1,37 @@
-"use client"; 
+"use client";
 
 import { createContext, ReactNode, useState } from "react";
-import { Auth, Tema } from "../types";
+import { Auth, Tema } from "./types";
+import Usuario from "@/model/Usuario";
 
 interface AppContextProps {
     tema: Tema;
     alternarTema: () => void;
     authPage: Auth;
     setAuthPage: (value: Auth) => void;
+    usuario: Usuario,
+    setUsuario: (value: Usuario) => void;
 }
 
-const AppContext = createContext<AppContextProps | undefined>(undefined);
+const defaultUsuario: Usuario = {
+    uid: '',
+    email: '',
+    nome: '',
+    token: '',
+    provedor: '',
+    imagemUrl: ''
+};
+
+const defaultContext: AppContextProps = {
+    tema: '',
+    alternarTema: () => { },
+    authPage: 'login',
+    setAuthPage: () => { },
+    usuario: defaultUsuario,
+    setUsuario: () => { },
+};
+
+const AppContext = createContext<AppContextProps>(defaultContext);
 
 interface AppProviderProps {
     children: ReactNode;
@@ -19,6 +40,7 @@ interface AppProviderProps {
 export function AppProvider({ children }: AppProviderProps) {
     const [authPage, setAuthPage] = useState<Auth>('login');
     const [tema, setTema] = useState<Tema>('');
+    const [usuario, setUsuario] = useState<Usuario>(defaultUsuario);
 
     function alternarTema() {
         setTema(tema === '' ? 'dark' : '');
@@ -29,7 +51,9 @@ export function AppProvider({ children }: AppProviderProps) {
             tema,
             alternarTema,
             authPage,
-            setAuthPage
+            setAuthPage,
+            usuario,
+            setUsuario
         }}>
             {children}
         </AppContext.Provider>
