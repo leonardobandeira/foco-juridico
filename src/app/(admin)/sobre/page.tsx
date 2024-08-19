@@ -30,10 +30,9 @@ export default function Sobre() {
                             <div className="w-4 h-4 ml-4"><a href="https://github.com/leonardobandeira"><IconeGithub /></a></div>
                         </div>
                     </span>
-
                 </p>
 
-            <Marketing style="mb-24" />
+                <Marketing style="mb-24" />
             </div>
         </div>
     );
