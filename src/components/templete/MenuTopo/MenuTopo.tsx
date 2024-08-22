@@ -4,14 +4,27 @@ import CartaoPessoal from "./CartaoPessoal";
 import ItemMenu from "./ItemMenu";
 import { AlertCircle, User, Copyright, LogOut, Settings } from "lucide-react"
 import { signOutWithGoogle } from "@/lib/firebase/auth";
+import useAppData from "@/data/hook/useAppData";
+import Usuario from "@/model/Usuario";
 
 interface MenuTopoProps {
-
 }
+
 export default function MenuTopo(props: MenuTopoProps) {
+    const { setUsuario } = useAppData();
+    const defaultUsuario: Usuario = {
+        uid: '',
+        email: '',
+        nome: '',
+        token: '',
+        provedor: '',
+        imagemUrl: ''
+    };
+
     const handleSignOut = async () => {
         await signOutWithGoogle();
         await removeCookie();
+        setUsuario(defaultUsuario)
     };
 
     return (
