@@ -14,6 +14,8 @@ import Usuario from "@/model/Usuario";
 import useAppData from "@/data/hook/useAppData";
 import { createCookie } from "@/actions/cookies";
 import { signInWithGoogle } from "@/lib/firebase/auth";
+import { redirect } from "next/navigation";
+import { HOME_ROUTE } from "@/lib/constants";
 
 async function usuarioNormalizado(usuarioFirebase: User): Promise<Usuario> {
     const token = await usuarioFirebase.getIdToken();

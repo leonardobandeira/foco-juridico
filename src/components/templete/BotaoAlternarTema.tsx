@@ -1,4 +1,3 @@
-import { IconeLua, IconeSol } from "../../components/icons"
 
 interface BotaoAlternarTemaProps {
     tema: string
@@ -15,7 +14,6 @@ export default function BotaoAlternarTema(props: BotaoAlternarTemaProps) {
         >
             <div className={`flex items-center justify-center
             bg-sky-50 text-yellow-600 w-6 h-6 rounded-full`}>
-                {IconeSol(4)}
             </div>
             <div className={`hidden lg:flex items-center ml-4 text-sky-50`}>
                 <span className="text-sm">Claro</span>
@@ -33,7 +31,6 @@ export default function BotaoAlternarTema(props: BotaoAlternarTemaProps) {
             </div>
             <div className={`flex items-center justify-center
             bg-black text-yellow-300 w-6 h-6 rounded-full`}>
-                {IconeLua(4)}
             </div>
         </div>
     )

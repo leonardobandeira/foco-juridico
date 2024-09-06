@@ -1,4 +1,3 @@
-import { IconeAjustes, IconeCasa, IconeLogout, IconeNotificacoes } from "../icons";
 import Logo from "../Logo";
 import MenuItem from "./MenuLateralItem";
 
@@ -16,15 +15,14 @@ export default function MenuLateral() {
         </div>
 
         <ul className={`flex-grow`}>
-            <MenuItem url="./" texto="Início" icone={IconeCasa} />
-            <MenuItem url="./ajustes" texto="Ajustes" icone={IconeAjustes} />
-            <MenuItem url="./notificacoes" texto="Notificações" icone={IconeNotificacoes} />
+            <MenuItem url="./" texto="Início" />
+            <MenuItem url="./ajustes" texto="Ajustes"  />
+            <MenuItem url="./notificacoes" texto="Notificações"  />
         </ul>
         <ul className={``}>
             <MenuItem
                 onClick={() => { console.log("Sair!") }}
                 texto="Sair"
-                icone={IconeLogout}
                 className="text-red-600 hover:bg-red-400 hover:text-sky-50
                     dark:text-red-600 dark:hover:text-sky-50" />
         </ul>
