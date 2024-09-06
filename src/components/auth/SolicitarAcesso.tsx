@@ -16,7 +16,7 @@ export default function SolicitarAcesso() {
             </div>
 
             <div className={`w-full max-w-md px-4`}>
-                <Formulario >
+                <Formulario onSubmit={() => {console.log('teste')}}>
                     <Input
                         label="Endereço de Email"
                         tipo="email"

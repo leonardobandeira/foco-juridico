@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import PainelTable from "@/components/gerenciar-paineis/PainelTable";
 import { Painel } from "@/data/context/types";
-import { getPaineis } from "@/services/painelService";
+import { getPaineis } from "@/app/services/painelService";
 
 export default function GerenciarPaineis() {
   const [paineis, setPaineis] = useState<Painel[]>([]);

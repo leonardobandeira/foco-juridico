@@ -18,7 +18,7 @@ export default function MenuTopo(props: MenuTopoProps) {
         nome: '',
         token: '',
         provedor: '',
-        imagemUrl: ''
+        picture: ''
     };
 
     const handleSignOut = async () => {

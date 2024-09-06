@@ -5,7 +5,7 @@ import useAppData from "@/data/hook/useAppData";
 export default function Foto({ classes = '' }) {
     const { usuario } = useAppData();
 
-    const imageUrl = usuario.uid ? usuario.imagemUrl : foto;
+    const imageUrl = usuario.uid ? usuario.picture : foto;
     return (
         <div className={`relative ${classes}`} style={{ width: '100%', height: '100%' }}>
             {typeof imageUrl === 'string' ? (

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { TipoMeta } from '@/data/context/types';
-import { getMetas } from "@/services/indicadorService";
+import { getMetas } from "@/app/services/indicadorService";
 import { Target } from "lucide-react";
 
 interface RangeAtingirProps {

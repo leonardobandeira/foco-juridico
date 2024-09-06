@@ -8,6 +8,7 @@ export function useUserSession(InitSession: string | null) {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(async (authUser) => {
       if (authUser) {
+        console.log("authUser", authUser)
         setUserUid(authUser.uid);
       } else {
         setUserUid(null);

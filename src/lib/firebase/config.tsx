@@ -1,9 +1,16 @@
 import { getAuth } from 'firebase/auth';
 import { initializeApp, getApps } from 'firebase/app';
 
-console.log("Env", process.env);
-
 const firebaseConfig = {
+  apiKey: "AIzaSyB-DMl_4BsacFzV8_eHFee-T6EciTh56MQ",
+  authDomain: "foco-juridico.firebaseapp.com",
+  projectId: "foco-juridico",
+  storageBucket: "foco-juridico.appspot.com",
+  messagingSenderId: "88310424877",
+  appId: "1:88310424877:web:5c050c9113792512c59fa4",
+};
+
+/* const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
   projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
@@ -11,7 +18,7 @@ const firebaseConfig = {
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
-};
+}; */
 
 const firebaseApp =
   getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];

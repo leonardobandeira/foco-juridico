@@ -3,7 +3,12 @@ const nextConfig = {
   reactStrictMode: true, // Recomendado para detectar problemas potenciais
   swcMinify: true, // Usar o SWC para minificar o código
   images: {
-    domains: ['lh3.googleusercontent.com'], // Adicione o domínio aqui
+    remotePatterns: [{
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+        port: '',
+        pathname: '/**', // Isso permite todas as imagens de lh3.googleusercontent.com
+      },], // Adicione o domínio aqui
   },
 };
 

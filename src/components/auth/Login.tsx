@@ -23,7 +23,7 @@ async function usuarioNormalizado(usuarioFirebase: User): Promise<Usuario> {
         email: usuarioFirebase.email || '',
         token,
         provedor: usuarioFirebase.providerData[0]?.providerId || '',
-        imagemUrl: usuarioFirebase.photoURL || ''
+        picture: usuarioFirebase.photoURL || ''
     };
 }
 
@@ -37,13 +37,13 @@ export default function Login() {
 
     const handleSignIn = async () => {
         const user = await signInWithGoogle();
-        const userUid = user?.uid;
 
         if (user) {
             const usuario = await usuarioNormalizado(user);
+            console.log("usuario logado", usuario)
             setUsuario(usuario);
-            if (userUid) {
-                await createCookie(userUid);
+            if (usuario.token) {
+                await createCookie(usuario.token);
             }
         }
     };

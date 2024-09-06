@@ -21,7 +21,7 @@ export default function Registrar() {
             </div>
 
             <div className={`w-full max-w-md px-4`}>
-                <Formulario>
+                <Formulario onSubmit={() => {console.log('teste')}}>
                     <TituloFormulario titulo="Registrar-se" />
                     <Input
                         label="Nome completo"

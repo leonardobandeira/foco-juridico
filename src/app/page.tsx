@@ -23,6 +23,6 @@ export default function Index() {
      }
 
     return (
-        <Quadrantes left={ladoEsquerdo} right={ladoDireito} bottom={rodape} back={false} />
+        <Quadrantes left={ladoEsquerdo} right={ladoDireito}  />
     );
 }

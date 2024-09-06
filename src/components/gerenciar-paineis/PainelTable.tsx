@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import PainelRow from './PainelRow';
 import PainelModal from './PainelModal';
-import { getPaineis, updatePainel, createPainel, deletePainel } from '@/services/painelService';
+import { getPaineis, updatePainel, createPainel, deletePainel } from '@/app/services/painelService';
 import { Painel } from '@/data/context/types';
 import TituloFormulario from '../form/TituloFormulario';
 

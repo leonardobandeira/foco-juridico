@@ -20,6 +20,7 @@ export interface Painel {
   nome: string;
   descricao: string;
   endereco: string;
+  indicadores: []
   /* grupoId: number;
   grupo: {
     id: number;

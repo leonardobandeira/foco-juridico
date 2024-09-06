@@ -10,7 +10,7 @@ export default function Inicio() {
     return (
         <div className="flex flex-col justify-between gap-y-24">
             <Banner />
-            <Formulario>
+            <Formulario onSubmit={() => {console.log('teste')}}>
                 <Botao
                     texto="Login"
                     className="mt-10"

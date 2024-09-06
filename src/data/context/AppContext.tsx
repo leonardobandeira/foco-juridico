@@ -19,7 +19,7 @@ const defaultUsuario: Usuario = {
     nome: '',
     token: '',
     provedor: '',
-    imagemUrl: ''
+    picture: ''
 };
 
 const defaultContext: AppContextProps = {

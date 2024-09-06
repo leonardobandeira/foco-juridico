@@ -6,7 +6,7 @@ export const getAlertas = async () => {
     const response = await api.get('/alerta');
     return response.data;
   } catch (error) {
-    console.error('Erro ao buscar paineis:', error);
+    console.error('Erro ao buscar alertas:', error);
     throw error;
   }
 };
