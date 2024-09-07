@@ -6,7 +6,6 @@ import useAppData from "@/data/hook/useAppData";
 
 export default function Index() {
     const { authPage } = useAppData();
-
     const renderAuthPage = () => {
         if (authPage === 'login') {
             return <Login />;

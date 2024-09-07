@@ -3,6 +3,8 @@
 import { createContext, ReactNode, useState } from "react";
 import { Auth, Tema } from "./types";
 import Usuario from "@/model/Usuario";
+import Cookies from "js-cookie";
+import { SESSION_COOKIE_NAME } from "@/lib/constants";
 
 interface AppContextProps {
     tema: Tema;
@@ -37,6 +39,16 @@ interface AppProviderProps {
     children: ReactNode;
 }
 
+function gerenciarCookies(logado: boolean) {
+    if (logado) {
+        Cookies.set(SESSION_COOKIE_NAME, logado + '', {
+            expires: 7
+        })
+    } else {
+        Cookies.remove(SESSION_COOKIE_NAME)
+    }
+}
+
 export function AppProvider({ children }: AppProviderProps) {
     const [authPage, setAuthPage] = useState<Auth>('login');
     const [tema, setTema] = useState<Tema>('');
@@ -44,6 +56,10 @@ export function AppProvider({ children }: AppProviderProps) {
 
     function alternarTema() {
         setTema(tema === '' ? 'dark' : '');
+    }
+
+    function configurarSessao(){
+        // para configurar os cookies
     }
 
     return (
