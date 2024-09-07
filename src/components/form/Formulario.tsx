@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 interface FormularioProps {
     className?: string;
-    onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+    onSubmit?: (event: React.FormEvent<HTMLFormElement>) => void;
     children: ReactNode;
 }
 

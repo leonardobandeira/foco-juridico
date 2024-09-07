@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext } from 'react'; // Certifique-se de que o caminho está correto
+import { useContext } from 'react'; 
 import AppContext from '../context/AppContext';
 
 const useAppData = () => {
