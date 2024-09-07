@@ -1,4 +1,3 @@
-import { removeCookie } from "@/actions/cookies";
 import Logo from "../../../components/Logo";
 import CartaoPessoal from "./CartaoPessoal";
 import ItemMenu from "./ItemMenu";

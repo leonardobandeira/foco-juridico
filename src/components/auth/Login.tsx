@@ -3,9 +3,9 @@
 import { useState } from "react";
 import { Mail, Lock } from "lucide-react";
 import { signInWithGoogle } from "@/lib/firebase/auth";
-import Usuario, { usuarioNormalizado } from "@/model/Usuario";
+import { usuarioNormalizado } from "@/model/Usuario";
 import useAppData from "@/data/hook/useAppData";
-import { useRouter } from "next/navigation"; 
+import { useRouter } from "next/navigation";
 import { HOME_ROUTE } from "@/lib/constants";
 import Botao from "../form/Botao";
 import Formulario from "../form/Formulario";
@@ -13,34 +13,19 @@ import TituloFormulario from "../form/TituloFormulario";
 import Logo from "../Logo";
 import LinkInformativo from "./LinkInformativo";
 import Input from "../form/Input";
-import { Auth } from "@/data/context/types";
 
 export default function Login() {
   const { setUsuario } = useAppData();
-  const router = useRouter(); 
+  const router = useRouter();
 
   const handleSignIn = async () => {
     const user = await signInWithGoogle();
 
     if (user) {
-      const usuario = await usuarioNormalizado(user); 
-      console.log("Usuário logado:", usuario);
-
-      setUsuario(usuario); 
-
-      const response = await fetch('/api/auth', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ token: usuario.token }),
-      });
-
-      if (response.ok) {
-        router.push(HOME_ROUTE);
-      } else {
-        console.error('Erro ao criar o cookie no servidor');
-      }
+      const usuario = await usuarioNormalizado(user);
+      console.log("Usuário logado feliz:", usuario);
+      setUsuario(usuario);
+      router.push(HOME_ROUTE);
     }
   };
 

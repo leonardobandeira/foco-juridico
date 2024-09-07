@@ -1,4 +1,4 @@
-import { SESSION_COOKIE_NAME, ROOT_ROUTE } from '@/lib/constants';
+import { ROOT_ROUTE } from '@/lib/constants';
 import axios from 'axios';
 import getToken from './infoCookie';
 
