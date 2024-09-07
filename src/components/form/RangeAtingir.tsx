@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { TipoMeta } from '@/data/context/types';
 import { getMetas } from "@/app/services/indicadorService";
 import { Target } from "lucide-react";
+import useAppData from "@/data/hook/useAppData";
 
 interface RangeAtingirProps {
     onChangeMeta: (valor: number) => void;
@@ -19,11 +20,12 @@ export default function RangeAtingir({ onChangeMeta, onChangeCondicao }: RangeAt
     const [mag, setMag] = useState<number>(1);
     const [valor, setValor] = useState<number>(1);
     const [metas, setMetas] = useState<TipoMeta[]>([]);
+    const { usuario } = useAppData()
 
     useEffect(() => {
         const fetchMetas = async () => {
             try {
-                const data = await getMetas();
+                const data = await getMetas(usuario.token);
                 setMetas(data);
             } catch (error) {
                 console.error('Erro ao buscar metas:', error);

@@ -1,8 +1,12 @@
 "use client"
 
-export default function TestPage() {
+import AlertasAtivos from "@/components/listas/AlertasAtivos";
+import useAppData from "@/data/hook/useAppData";
 
+export default function TestPage() {
   return (
-    <h1>Bem vindo!</h1>
+    <div>
+      <AlertasAtivos></AlertasAtivos>
+    </div>
   );
 }

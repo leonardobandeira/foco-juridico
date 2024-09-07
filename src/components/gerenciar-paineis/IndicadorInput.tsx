@@ -10,9 +10,18 @@ interface IndicadorInputProps {
 
 export default function IndicadorInput({ newIndicador, onChange, onAdd }: IndicadorInputProps) {
     return (
-        <div className="flex flex-row items-center space-x-2 mb-4">
+        <div className="flex flex-col items-center space-x-2 mb-4">
             <Input
                 label="Adicionar Indicador"
+                tipo="text"
+                valor={newIndicador}
+                onChange={onChange}
+                obrigatorio
+                icone={TextSearch}
+                className="mt-2"
+            />
+            <Input
+                label="Chave de busca"
                 tipo="text"
                 valor={newIndicador}
                 onChange={onChange}

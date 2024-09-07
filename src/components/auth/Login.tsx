@@ -44,7 +44,6 @@ export default function Login() {
       const user = await signInWithGoogle();
       if (user) {
         const usuario = await usuarioNormalizado(user);
-        console.log("Usuário logado feliz com Google:", usuario);
         setUsuario(usuario);
         router.push(HOME_ROUTE);
       }

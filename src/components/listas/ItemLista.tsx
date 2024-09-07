@@ -1,17 +1,25 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleArrowUp, faCircleArrowDown } from "@fortawesome/free-solid-svg-icons";
+import { LucideIcon } from "lucide-react";
 
-export default function ItemLista() {
+interface ItemListaProps {
+    nome: string,
+    painel: string,
+    valor: string,
+    icone: LucideIcon
+}
+
+export default function ItemLista(props: ItemListaProps) {
+    const { icone: Icon } = props;
+
     return (
         <div className="my-2 p-2 flex items-center border-b border-gray-100">
-            <FontAwesomeIcon icon={faCircleArrowUp} className="text-base1 text-5xl" />
+            {Icon && <Icon className={`ml-2 h-12 w-12 text-base1`} />}
             <div className="w-2/3 flex flex-col ml-4">
-                <strong className="text-black">Alerta 1</strong>
-                <span className="text-gray-400">Painel de tempo de movimentação</span>
+                <strong className="text-black">{props.nome}</strong>
+                <span className="text-gray-400">{props.painel}</span>
             </div>
 
             <div className="flex flex-grow justify-end">
-                <strong className="text-black">4.545</strong>
+                <strong className="text-black">Gatinlho:</strong>{props.valor}
             </div>
         </div>
     );

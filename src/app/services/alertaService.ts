@@ -1,9 +1,15 @@
 import { Alerta } from "@/data/context/types";
 import api from "./api";
 
-export const getAlertas = async () => {
+const createAuthHeaders = (token: string) => ({
+  headers: {
+    Authorization: `Bearer ${token}`,
+  },
+});
+
+export const getAlertas = async (token: string) => {
   try {
-    const response = await api.get('/alerta');
+    const response = await api.get('/alerta', createAuthHeaders(token));
     return response.data;
   } catch (error) {
     console.error('Erro ao buscar alertas:', error);
@@ -11,9 +17,9 @@ export const getAlertas = async () => {
   }
 };
 
-export const creatAlerta = async (alerta: Alerta) => {
+export const createAlerta = async (alerta: Alerta, token: string) => {
   try {
-    const response = await api.post<Alerta>('/alerta', alerta);
+    const response = await api.post<Alerta>('/alerta', alerta, createAuthHeaders(token));
     return response.data;
   } catch (error) {
     console.error('Erro ao criar alerta:', error);

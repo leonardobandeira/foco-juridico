@@ -1,22 +1,17 @@
 import api from "./api";
 
-export const getProfile = async () => {
+const createAuthHeaders = (token: string) => ({
+  headers: {
+    Authorization: `Bearer ${token}`,
+  },
+});
+
+export const getProfile = async (token: string) => {
   try {
-    const response = await api.get('/usuario/profile');
+    const response = await api.get('/usuario/profile', createAuthHeaders(token));
     return response.data;
   } catch (error) {
-    console.error('Erro ao buscar alertas:', error);
+    console.error('Erro ao buscar perfil do usuário:', error);
     throw error;
   }
 };
-
-/* 
-export const creatAlerta = async (alerta: Alerta) => {
-  try {
-    const response = await api.post<Alerta>('/alerta', alerta);
-    return response.data;
-  } catch (error) {
-    console.error('Erro ao criar alerta:', error);
-    throw error;
-  }
-}; */

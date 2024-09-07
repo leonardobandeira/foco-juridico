@@ -1,9 +1,9 @@
+import useAppData from '@/data/hook/useAppData';
 import { ROOT_ROUTE } from '@/lib/constants';
 import axios from 'axios';
-import getToken from './infoCookie';
 
 const api = axios.create({
-    baseURL: 'http://localhost:3023',
+    baseURL: 'http://localhost:3000',
     timeout: 10000,
     headers: {
         'Content-Type': 'application/json',
@@ -12,10 +12,6 @@ const api = axios.create({
 
 api.interceptors.request.use(
     (config) => {
-        const token = getToken;
-        if (token) {
-            config.headers.Authorization = `Bearer ${token}`;
-        }
         return config;
     },
     (error) => {

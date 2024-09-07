@@ -1,3 +1,4 @@
+import { ArrowBigDown } from "lucide-react";
 import Titulo from "../templete/Titulo";
 import ItemLista from "./ItemLista";
 
@@ -14,11 +15,8 @@ export default function AlertasAtivos() {
             </div>
 
             <div className="">
-                <ItemLista />
-                <ItemLista />
-                <ItemLista />
-                <ItemLista />
-                <ItemLista />
+                <ItemLista icone={ArrowBigDown} nome="30 dias sem movimentação" painel="Painel de Tempo de Movimentação" valor="Maior que 10.000"/>
+                <ItemLista icone={ArrowBigDown} nome="Processos a prescrever" painel="Painel de Prescrição" valor="Maior que 30"/>
             </div>
         </div>
     )

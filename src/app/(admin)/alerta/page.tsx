@@ -11,8 +11,9 @@ import { ItemOption } from "@/data/context/types";
 import { getIndicadoresDoPainel, getPaineis } from "@/app/services/painelService";
 import { ArrowBigRight, ChartLine, CircleX, PlusCircle, Siren, TextSearch, ThumbsUp } from "lucide-react";
 import { useEffect, useState } from "react";
-import { creatAlerta } from "@/app/services/alertaService";
 import { CircleCheckBig } from "lucide-react";
+import useAppData from "@/data/hook/useAppData";
+import { createAlerta } from "@/app/services/alertaService";
 
 export default function Alerta() {
     const [nome, setNome] = useState('');
@@ -22,7 +23,8 @@ export default function Alerta() {
     const [valor, setValor] = useState(1);
     const [tipoMetaId, setTipoMetaId] = useState(1);
     const [proximo, setProximo] = useState(true);
-    const [statusCriacao, setStatusCriacao] = useState(200);
+    const [statusCriacao, setStatusCriacao] = useState(500);
+    const { usuario } = useAppData();
 
     const [paineis, setPaineis] = useState<ItemOption[]>([]);
     const [indicadores, setIndicadores] = useState<ItemOption[]>([]);
@@ -30,7 +32,7 @@ export default function Alerta() {
     useEffect(() => {
         const fetchPaineis = async () => {
             try {
-                const data = await getPaineis();
+                const data = await getPaineis(usuario.token);
                 if (Array.isArray(data)) {
                     const transformedData = data.map((painel: any) => ({
                         id: painel.id,
@@ -41,7 +43,7 @@ export default function Alerta() {
                     console.error('Dados retornados não são um array:', data);
                 }
             } catch (error) {
-                console.error('Erro ao buscar paineis:', error);
+                console.error('Erro ao buscar paineis página:', error);
             }
         };
         fetchPaineis();
@@ -51,7 +53,7 @@ export default function Alerta() {
         const fetchIndicadores = async () => {
             if (painel) {
                 try {
-                    const data = await getIndicadoresDoPainel(painel);
+                    const data = await getIndicadoresDoPainel(painel, usuario.token);
                     if (Array.isArray(data)) {
                         const transformedData = data.map((indicador: any) => ({
                             id: indicador.id,
@@ -91,7 +93,7 @@ export default function Alerta() {
             valor
         };
 
-        creatAlerta(alerta);
+        createAlerta(alerta, usuario.token);
         setStatusCriacao(200);
     };
 
