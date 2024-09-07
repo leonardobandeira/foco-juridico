@@ -19,12 +19,12 @@ export default function Botao({
     const tipoClasses = {
         primario: 'bg-base1 hover:bg-blue-500 text-white mt-6',
         secundario: 'bg-base2 hover:bg-gray-500 text-white mt-6',
-        outline: 'md:hidden hover:bg-gray-200 text-base1',
+        outline: 'hover:bg-gray-200 text-base1 border border-solid border-base1',
         voltar: 'text-left rounded-full'
     };
 
     return (
-        <button
+        (<button
             onClick={onClick}
             className={clsx(
                 'rounded-xl font-semibold button w-[335px] px-4 py-2 flex flex-row justify-center items-center',
@@ -33,7 +33,7 @@ export default function Botao({
             )}
         >
             {tipo !== 'voltar' && texto}
-            {Icon && <Icon className="ml-2 h-4 w-4 text-white" />}
-        </button>
+            {Icon && <Icon className={`ml-2 h-4 w-4 ${tipo === 'outline' ? 'text-base1' : 'text-white'}`} />}
+        </button>)
     );
 }
