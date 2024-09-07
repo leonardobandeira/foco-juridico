@@ -23,7 +23,6 @@ export default function MenuTopo(props: MenuTopoProps) {
 
     const handleSignOut = async () => {
         await signOutWithGoogle();
-        await removeCookie();
         setUsuario(defaultUsuario)
     };
 
