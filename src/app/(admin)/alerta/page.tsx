@@ -22,8 +22,8 @@ export default function Alerta() {
     const [frequencia, setFrequencia] = useState(0);
     const [valor, setValor] = useState(1);
     const [tipoMetaId, setTipoMetaId] = useState(1);
-    const [proximo, setProximo] = useState(true);
-    const [statusCriacao, setStatusCriacao] = useState(500);
+    const [proximo, setProximo] = useState(false);
+    const [statusCriacao, setStatusCriacao] = useState(0);
     const { usuario } = useAppData();
 
     const [paineis, setPaineis] = useState<ItemOption[]>([]);
